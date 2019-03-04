@@ -1,0 +1,231 @@
+/*@import url('https://fonts.googleapis.com/css?family=Dancing+Script');*/
+/*@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT');*/
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 50px;
+    width: 50px;
+    outline: black;
+    background-color: black;
+    background-size: 30px, 100px;
+    border-radius: 20%;
+    border: 1px solid black;
+}
+
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#body-login{
+    background: white;
+}
+
+header{
+    margin-top: 80px;
+}
+
+#noticias{
+    margin-top: 80px;
+}
+
+.navbar{
+    background-color: black;    
+}
+
+.header-btn{
+    background-color: white; 
+    color: #C9001A; 
+    border: 2px solid #C9001A;
+}
+
+.header-btn:hover {
+    background-color: #C9001A;
+    color: white;
+}
+
+#testimonial{
+    background: #C9001A;
+    padding: 50px 0 30px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+#info-two{
+    background: #0742FF;
+    color: white;
+}
+
+.info-one-btn{
+    background-color: white; 
+    color: #0742FF; 
+    border: 2px solid #0742FF;
+}
+
+.info-one-btn:hover {
+    background-color: #0742FF;
+    color: white;
+}
+
+footer{
+    background: url(../plugins/bootstrap/img/barber.jpg)
+}
+
+/** Fondo registro y loggin */
+#body-register{
+    background: white;
+}
+
+#body-loggin{
+    background: url(../plugins/bootstrap/img/FondoLogginDos.jpg);
+    
+}
+#body-crearAdmin{
+    background: url(../plugins/bootstrap/img/barber2.jpg);
+}
+#body-indexAdmin{
+    margin-top: 50px;
+}
+
+#body-indexUser{
+    margin-top: 50px;
+}
+
+#body-editAdmin{
+    background: url(../plugins/bootstrap/img/barber2.jpg);
+}
+
+#body-verAdmin{
+    background: url(../plugins/bootstrap/img/barber2.jpg);
+    margin-top: 50px;
+}
+
+.content-card-register{
+    
+}
+
+.header-content-login{
+    position: fixed;
+    width: 60%; 
+}
+/** Estilos para la pagina al iniciar Sesion */
+
+.sidebar{
+    background: black;
+    color: aliceblue;
+    position: fixed;
+    overflow-y: scroll;
+    bottom: 0%;
+    top: 8.5%;
+    padding: 0%;
+}
+
+#card-accordion{
+    background: black;
+    padding: 0%;
+}
+
+.h2-carrusel{
+
+    color: black
+}
+
+.accordion-btn{
+    background-color: black; 
+    color: white; 
+    border: 2px solid black;
+    padding: 4%;
+    margin: 0 0 1px 0;
+}
+
+.accordion-btn:hover{
+    background: white;
+    color: black;
+}
+
+.botones{
+    color: aliceblue;
+    list-style: none;
+    padding: 0%;
+}
+
+.botones a li{
+    background: rgba(119, 118, 118, 0.925);
+    padding: 3%;
+    margin: 0 0 1px 0;
+    text-align: center;
+}
+
+.botones a li:hover{
+    background: rgba(90, 90, 90, 0.719);
+}
+
+.botones a{
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.sidebar::-webkit-scrollbar
+{
+    width: 7px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar
+{
+    width: 7px;
+}
+
+body::-webkit-scrollbar-thumb
+{
+    background: darkgray;
+    border-radius: 5px;
+}
+
+/** Efectos para los h1 de los cruds */
+.cuerpo-dos{
+    text-align: center;
+}
+
+.edit-btn{
+    align-content: initial;
+}
+.card{
+    text-align: left;
+}
+
+h1{
+    display: inline-block;
+    position: relative;
+    color: gray;
+    /**font-family: 'Dancing Script', cursive;*/
+    /*font-family: 'Old Standard TT', serif;*/
+    font-family: 'Bree Serif', serif;
+    font-size: 40px;
+}
+
+h1::after,h1::before{
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: currentColor;
+    top: 0.6em;
+    transform: scale(0);
+    transition: all 0.6s ease-in;
+}
+
+h1:hover::before, h1:hover::after{
+    transform: scale(1);
+}
+
+h1::before{
+    left: -140px;
+}
+
+h1::after{
+    right:-140px;
+}

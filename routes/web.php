@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/inicio', 'InicioController@index');
+
+Route::resource('barberos', 'BarberoController');
+
+Route::get('/ver', 'BarberoController@Ver');
+
+Route::get('/editar', 'BarberoController@Editar');
