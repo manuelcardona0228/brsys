@@ -13,6 +13,9 @@
 
     <!-- CSS Personalizados -->
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+
+    <script src="/plugins/bootstrap/js/navegacion.js"></script>
 
     <link rel="icon" href="/plugins/bootstrap/img/BarberSys 1.0 Favicon.ico">
 

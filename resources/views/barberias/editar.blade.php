@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
-        <h1 class="lines-effect mt-2">Crear Barberia</h1>
+        <h1 class="lines-effect mt-2">Editar Barberia</h1>
         <hr>
 
         <div class="card">
-            <div class="card-header text-white bg-dark">{{ __('Especifique la información de la barberia a crear.') }}</div>
+            <div class="card-header text-white bg-dark">{{ __('Especifique la información de la barberia a editar.') }}</div>
                 <div class="card-body">
                     <div class="form-group">
                         <label for="Nit">Nit</label>
@@ -35,11 +35,11 @@
 
                     <div class="form-group">
                         <label for="Admin">Administrador</label>
-                        <input type="select" placeholder="Administrador..." class="form-control" name="admin">
+                        <input type="select" placeholder="Administrador" class="form-control" name="admin">
                     </div>
 
                     <div class="form-group">
-                        <a href="{{ route('barberias.index') }}" class="btn btn-primary">Crear Barberia</a>
+                        <a href="{{ route('barberias.index') }}" class="btn btn-primary">Actualizar Barberias</a>
                         <a href="{{ route('barberias.index') }}" class="btn btn-secondary">Volver</a>
                     </div>
             </div>

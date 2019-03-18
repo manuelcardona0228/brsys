@@ -53,7 +53,7 @@
               </tr>
               <tr>
                 <td>Actualizado en</td>
-                <td></td>
+                <td>03/05/2019</td>
               </tr>
               </table>
 
@@ -61,7 +61,7 @@
 
               <a href="{{ route('barberos.index') }}" class="btn btn-info btn-block">Volver al listado</a>
               </br>
-              <a href="/editar" class="btn btn-warning btn-block">Editar</a>
+              <a href="/editarBarbero" class="btn btn-warning btn-block">Editar</a>
               </br>
               <div class="form-group">
                     <a href="{{ route('barberos.index') }}" class="btn btn-danger btn-block">Borrar Barbero</a>

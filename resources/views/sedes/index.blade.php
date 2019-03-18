@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
-    <h1 class="lines-effect">Lista de barberias</h1>
+    <h1 class="lines-effect">Lista de sedes</h1>
     <hr>
-    <a href="{!! url('barberias/create') !!}" class="btn btn-success btn-block">Crear Barberia</a></p>
+    <a href="{!! url('sedes/create') !!}" class="btn btn-success btn-block">Crear Sede</a></p>
     <hr>
         <table class="table">
             <thead class="thead-dark">
@@ -24,9 +24,9 @@
                 <td>10239089</td>
                 <td>Jungla</td>
                 <td>04/03/2019</td>
-                <td><a href="/verBarberia" class="btn btn-outline-primary btn-sm">Ver</a></td>
-                <td><a href="/editarBarberia" class="btn btn-outline-dark btn-sm">Editar</a></td>
-                <td><a href="{{ route('barberias.index') }}" class="btn btn-outline-danger btn-sm">Borrar</a></td>
+                <td><a href="/verSede" class="btn btn-outline-primary btn-sm">Ver</a></td>
+                <td><a href="/editarSede" class="btn btn-outline-dark btn-sm">Editar</a></td>
+                <td><a href="{{ route('sedes.index') }}" class="btn btn-outline-danger btn-sm">Borrar</a></td>
                 </tr>
             </tbody>
         </table>

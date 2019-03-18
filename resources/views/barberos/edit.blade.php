@@ -8,19 +8,19 @@
         <div class="card">
             <div class="card-header text-white bg-dark">{{ __('Especifique la información del barbero a editar.') }}</div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="Nit">Nit</label>
-                        <input type="text" placeholder="Nit" class="form-control" name="nit">
+                <div class="form-group">
+                        <label for="Documento">Documento</label>
+                        <input type="text" placeholder="Documento" class="form-control" name="documento">
                     </div>
 
                     <div class="form-group">
-                        <label for="RazonSocial">Razón Social</label>
-                        <input type="text" placeholder="Razón Social" class="form-control" name="razonSocial">
+                        <label for="Nombres">Nombres</label>
+                        <input type="text" placeholder="Nombres" class="form-control" name="nombres">
                     </div>
 
                     <div class="form-group">
-                        <label for="Direccion">Dirección</label>
-                        <input type="text" placeholder="Dirección" class="form-control" name="direccion">
+                        <label for="Apellidos">Apellidos</label>
+                        <input type="text" placeholder="Apellidos" class="form-control" name="apellidos">
                     </div>
 
                     <div class="form-group">
@@ -29,13 +29,33 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="SitioWeb">Sitio Web</label>
-                        <input type="text" placeholder="Sitio Web" class="form-control" name="sitioWeb">
+                        <label for="E-mail">E-mail</label>
+                        <input type="email" placeholder="Dirección E-mail" class="form-control" name="email">
                     </div>
 
                     <div class="form-group">
-                        <label for="Admin">Administrador</label>
-                        <input type="select" placeholder="Administrador" class="form-control" name="admin">
+                        <label for="Fecha De Nacimiento">Fecha De Nacimiento</label>
+                        <input type="date" placeholder="Fecha De Nacimiento" class="form-control" name="fechaNac">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Calificiacion">Calificación</label>
+                        <input type="text" placeholder="Calificiación" class="form-control" name="calificacion">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nombre De Usuario">Nombre De Usuario</label>
+                        <input type="text" placeholder="Nombre De Usuario" class="form-control" name="nameUser">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Contraseña">Contraseña</label>
+                        <input type="password" placeholder="Contraseña" class="form-control" name="pass">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Barberia">Barberia</label>
+                        <input type="select" placeholder="Barberia" class="form-control" name="barberia">
                     </div>
 
                     <div class="form-group">
