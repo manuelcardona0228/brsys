@@ -19,6 +19,12 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+    <!-- DataRangePicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 </head>
 <body>
 
@@ -73,68 +79,52 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2 sidebar">
-        <div class="accordion" id="accordionExample">
-        <div class="card" id="card-accordion">
-                <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-block accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <a><i class="fas fa-users"></i> Cargos</a> 
-                    </button>
-                </h5>
-                </div>
-
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                    <ul class="botones">
-                        <a href="{{ route('cargos.create') }}"><li>Agregar Cargo</li></a>
-                        <a href="{{ route('cargos.index') }}"><li>Ver Cargos</li></a>
-                    </ul>
-                </div>
-                </div>
-            </div>
+            <div class="accordion" id="accordionExample">
                 <div class="card" id="card-accordion">
-                <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                       <a><i class="fas fa-toolbox"></i> Administradores</a> 
-                    </button>
-                </h5>
-                </div>
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                        <button class="btn btn-block accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a><i class="fas fa-calendar-alt"></i> Gestionar Turnos</a> 
+                        </button>
+                        </h5>
+                    </div>
 
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-                    <ul class="botones">
-                        <a href="{{ route('admins.create') }}"><li>Agregar Administrador</li></a>
-                        <a href="{{ route('admins.index') }}"><li>Ver Administradores</li></a>
-                    </ul>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="botones">
+                                <a href="{{ route('cargos.create') }}"><li><i class="fas fa-calendar-check"></i> Pedir Turno</li></a>
+                                <a href="{{ route('cargos.index') }}"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <div class="card" id="card-accordion">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a><i class="fas fa-address-book"></i></i> Ver Perfiles</a> 
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="botones">
+                                <a href="{{ route('admins.create') }}"><li>Agregar Administrador</li></a>
+                                <a href="{{ route('admins.index') }}"><li>Ver Administradores</li></a>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card" id="card-accordion">
-                <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <a><i class="fas fa-cut"></i> Barberos</a> 
-                    </button>
-                </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                    <ul class="botones">
-                    <a href="{{ route('barberos.create') }}"><li>Agregar Barbero</li></a>
-                    <a href="{{ route('barberos.index') }}"><li>Ver Barberos</li></a>
-                    </ul>
-                </div>
-                </div>
-            </div>
-        </div>            
+        </div>
             <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
-                </div>
+            </div>
                 @yield('content')
             </div>
         </div>

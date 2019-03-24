@@ -50,6 +50,13 @@ Route::get('/editarTurno', 'TurnoController@editar');
 Route::resource('users', 'UserController');
 Route::get('/verUsers', 'UserController@ver');
 Route::get('/editarUsers', 'UserController@editar');
+Route::get('/inicioUser', 'UserController@inicio');
+Route::get('/pedirTurno', 'UserController@pedirTurno');
+Route::get('/buscarBarbero', 'UserController@buscarBarberos');
+Route::get('/perfilBarbero', 'UserController@verPerfil');
+Route::get('/buscarServicios', 'UserController@buscarServicios');
+Route::get('/verServicios', 'UserController@verServicios');
+
 
 
 Route::resource('cargo', 'CargoController');
@@ -68,3 +75,4 @@ Route::get('/editarServicio', 'ServicioController@editar');
 Route::resource('perfiles', 'PerfilController');
 Route::get('/verPerfil', 'PerfilController@ver');
 Route::get('/editarPerfil', 'PerfilController@editar');
+

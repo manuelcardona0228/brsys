@@ -43,6 +43,46 @@ header{
     color: white;
 }
 
+.pTurno-btn{
+    margin-left: 140px;
+    background-color: white;
+    color: green;
+}
+
+.pTurno-btn:hover{
+    background-color: green;
+    color: white;
+}
+
+.vTurno-btn:hover{
+    background: rgba(0,0,0,0);
+    color: gray;
+    box-shadow: inset 0 0 0 3px gray;
+}
+
+.mTurno-btn{
+    margin-left: 220px;
+    color: white;
+    background-color: #0F078A;
+}
+.mTurno-btn:hover{
+    background: rgba(0,0,0,0);
+    color: #0F078A;
+    box-shadow: inset 0 0 0 2px #0F078A;
+}
+
+.bServicio-btn{
+    margin-left: 440px;
+    color: white;
+    background-color: #0F1BCF;
+}
+
+.bServicio-btn:hover{
+    background: rgba(0,0,0,0);
+    color: #0F1BCF;
+    box-shadow: inset 0 0 0 2px #0F1BCF;
+}
+
 #testimonial{
     background: #C9001A;
     padding: 50px 0 30px 0;

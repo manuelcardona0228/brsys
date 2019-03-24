@@ -90,4 +90,34 @@ class UserController extends Controller
     {
         redirec('/users');
     }
+
+    public function inicio()
+    {
+        return view('vistasCliente.home');
+    }
+
+    public function pedirTurno()
+    {
+        return view('vistasCliente.pedirTurno');
+    }
+
+    public function buscarBarberos()
+    {
+        return view('vistasCliente.buscarBarbero');
+    }
+
+    public function verPerfil()
+    {
+        return view('vistasCliente.verPerfilBarbero');
+    }
+
+    public function buscarServicios()
+    {
+        return view('vistasCliente.buscarServiciosBarberias');
+    }
+
+    public function verServicios()
+    {
+        return view('vistasCliente.verServiciosBarberias');
+    }
 }
