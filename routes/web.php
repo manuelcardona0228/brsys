@@ -25,6 +25,10 @@ Route::get('/inicio', 'InicioController@index');
 Route::resource('barberos', 'BarberoController');
 Route::get('/verBarbero', 'BarberoController@Ver');
 Route::get('/editarBarbero', 'BarberoController@Editar');
+Route::get('/inicioBarbero', 'BarberoController@inicio');
+Route::get('/listaTurnos', 'BarberoController@verTurnos');
+Route::get('/histTurnosB', 'BarberoController@turnosRealizados');
+Route::get('/agendaBarbero', 'BarberoController@agendaTurnos');
 
 
 Route::resource('barberias', 'BarberiaController');
