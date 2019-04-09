@@ -36,7 +36,7 @@ class CreateBarbershopsTable extends Migration
             ->references('id')
             ->on('cities');
 
-            $table->foreign('barbershop_administrators_id')
+            $table->foreign('barbershop_administrator_id')
             ->references('id')
             ->on('barbershop_administrators');
         });

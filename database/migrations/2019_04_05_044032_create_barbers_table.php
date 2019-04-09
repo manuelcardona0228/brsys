@@ -18,7 +18,7 @@ class CreateBarbersTable extends Migration
             $table->string('name', 30);
             $table->string('lastName', 30);
             $table->string('phone', 13);
-            $table->date('fechaNac');
+            $table->date('birthdate');
             $table->string('address', 64);
             $table->string('email', 64);
             $table->string('nameUser', 20);
@@ -31,11 +31,11 @@ class CreateBarbersTable extends Migration
             $table->timestamps();
 
             $table->foreign('type_user_id')
-            ->refences('id')
+            ->references('id')
             ->on('type_users');
 
             $table->foreign('headquarter_id')
-            ->refences('id')
+            ->references('id')
             ->on('headquarters');
             
         });

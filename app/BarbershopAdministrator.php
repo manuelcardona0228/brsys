@@ -12,7 +12,7 @@ class BarbershopAdministrator extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'lastName', 'phone', 'fechaNac', 'address', 'email', 'nameUser', 'password', 'type_user_id', 'longitude', 'latitude'
+        'name', 'lastName', 'phone', 'birthdate', 'address', 'email', 'nameUser', 'password', 'type_user_id', 'longitude', 'latitude'
     ];
     /**
      * The attributes that should be hidden for arrays.

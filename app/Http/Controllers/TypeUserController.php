@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class BarberiaController extends Controller
+class TypeUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class BarberiaController extends Controller
      */
     public function index()
     {
-        return view('barberias.index');
+        return view('cargos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class BarberiaController extends Controller
      */
     public function create()
     {
-        return view('barberias.create');
+        return view('cargos.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class BarberiaController extends Controller
 
     public function ver()
     {
-        return view('barberias.ver');
+        return view('cargos.ver');
     }
     /**
      * Display the specified resource.
@@ -54,7 +54,7 @@ class BarberiaController extends Controller
 
     public function editar()
     {
-        return view('barberias.editar');
+        return view('cargos.editar');
     }
     
     /**
@@ -77,7 +77,7 @@ class BarberiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/barberias');
+        return redirect('/cargos');
     }
 
     /**
@@ -88,6 +88,6 @@ class BarberiaController extends Controller
      */
     public function destroy($id)
     {
-        redirec('/barberias');
+        redirec('/cargos');
     }
 }

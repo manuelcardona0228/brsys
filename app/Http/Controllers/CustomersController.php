@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminBarberController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class AdminBarberController extends Controller
      */
     public function index()
     {
-        return view('admins.index');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class AdminBarberController extends Controller
      */
     public function create()
     {
-        return view('admins.create');
+        //
     }
 
     /**
@@ -37,10 +37,6 @@ class AdminBarberController extends Controller
         //
     }
 
-    public function ver()
-    {
-        return view('admins.ver');
-    }
     /**
      * Display the specified resource.
      *
@@ -52,11 +48,6 @@ class AdminBarberController extends Controller
         //
     }
 
-    public function editar()
-    {
-        return view('admins.editar');
-    }
-    
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,7 +68,7 @@ class AdminBarberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/admins');
+        //
     }
 
     /**
@@ -88,6 +79,6 @@ class AdminBarberController extends Controller
      */
     public function destroy($id)
     {
-        redirec('/admins');
+        //
     }
 }

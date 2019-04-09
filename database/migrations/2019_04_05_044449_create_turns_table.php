@@ -25,6 +25,18 @@ class CreateTurnsTable extends Migration
             $table->boolean('state');
             $table->timestamps();
 
+            $table->foreign('barber_id')
+            ->references('id')
+            ->on('barbers');
+
+            $table->foreign('service_id')
+            ->references('id')
+            ->on('services');
+
+            $table->foreign('customer_id')
+            ->references('id')
+            ->on('customers');
+
             
         });
     }

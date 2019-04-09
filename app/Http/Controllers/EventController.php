@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ServicioController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        return view('servicios.index');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        return view('servicios.create');
+        //
     }
 
     /**
@@ -37,10 +37,6 @@ class ServicioController extends Controller
         //
     }
 
-    public function ver()
-    {
-        return view('servicios.ver');
-    }
     /**
      * Display the specified resource.
      *
@@ -52,11 +48,6 @@ class ServicioController extends Controller
         //
     }
 
-    public function editar()
-    {
-        return view('servicios.editar');
-    }
-    
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,7 +68,7 @@ class ServicioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/servicios');
+        //
     }
 
     /**
@@ -88,6 +79,6 @@ class ServicioController extends Controller
      */
     public function destroy($id)
     {
-        redirec('/servicios');
+        //
     }
 }

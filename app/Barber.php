@@ -12,7 +12,7 @@ class Barber extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'lastNamephone', 'fechaNac', 'address', 'email', 'nameUser', 'password', 'qualification', 'type_user_id', 'headquarter_id'
+        'name', 'lastName', 'phone', 'birthdate', 'address', 'email', 'nameUser', 'password', 'qualification', 'type_user_id', 'headquarter_id'
     ];
 
     /**

@@ -21,8 +21,10 @@ class CreateSystemAdministratorsTable extends Migration
             $table->string('phone', 13);
             $table->string('nameUser', 20);
             $table->string('password', 20);
-            $table->date('fechaNac');
+            $table->date('birthdate');
+
             $table->unsignedInteger('type_user_id');
+            
             $table->timestamps();
 
             $table->foreign('type_user_id')

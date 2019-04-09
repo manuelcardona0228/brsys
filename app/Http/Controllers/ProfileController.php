@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SedeController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class SedeController extends Controller
      */
     public function index()
     {
-        return view('sedes.index');
+        return view('perfiles.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class SedeController extends Controller
      */
     public function create()
     {
-        return view('sedes.create');
+        return view('perfiles.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class SedeController extends Controller
 
     public function ver()
     {
-        return view('sedes.ver');
+        return view('perfiles.ver');
     }
     /**
      * Display the specified resource.
@@ -54,7 +54,7 @@ class SedeController extends Controller
 
     public function editar()
     {
-        return view('sedes.editar');
+        return view('perfiles.editar');
     }
     
     /**
@@ -77,7 +77,7 @@ class SedeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/sedes');
+        return redirect('/perfiles');
     }
 
     /**
@@ -88,6 +88,6 @@ class SedeController extends Controller
      */
     public function destroy($id)
     {
-        redirec('/sedes');
+        redirec('/perfiles');
     }
 }

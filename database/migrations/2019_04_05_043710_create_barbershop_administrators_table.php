@@ -18,7 +18,7 @@ class CreateBarbershopAdministratorsTable extends Migration
             $table->string('name', 30);
             $table->string('lastName', 30);
             $table->string('phone', 13);
-            $table->date('fechaNac');
+            $table->date('birthdate');
             $table->string('address', 64);
             $table->string('email', 64);
             $table->string('nameUser', 20);

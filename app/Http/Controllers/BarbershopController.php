@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PerfilController extends Controller
+class BarbershopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        return view('perfiles.index');
+        return view('barberias.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class PerfilController extends Controller
      */
     public function create()
     {
-        return view('perfiles.create');
+        return view('barberias.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class PerfilController extends Controller
 
     public function ver()
     {
-        return view('perfiles.ver');
+        return view('barberias.ver');
     }
     /**
      * Display the specified resource.
@@ -54,7 +54,7 @@ class PerfilController extends Controller
 
     public function editar()
     {
-        return view('perfiles.editar');
+        return view('barberias.editar');
     }
     
     /**
@@ -77,7 +77,7 @@ class PerfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/perfiles');
+        return redirect('/barberias');
     }
 
     /**
@@ -88,6 +88,6 @@ class PerfilController extends Controller
      */
     public function destroy($id)
     {
-        redirec('/perfiles');
+        redirec('/barberias');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class BarberoController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class BarberoController extends Controller
      */
     public function index()
     {
-        return view('barberos.index');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class BarberoController extends Controller
      */
     public function create()
     {
-        return view('barberos.create');
+        //
     }
 
     /**
@@ -37,27 +37,24 @@ class BarberoController extends Controller
         //
     }
 
-    public function Ver()
-    {
-        return view('barberos.ver');
-    }
-
-    public function show()
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
         //
     }
 
-    public function Editar()
-    {
-        return view('barberos.edit');
-    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
         //
     }
@@ -71,7 +68,7 @@ class BarberoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/barberos');
+        //
     }
 
     /**
@@ -82,26 +79,6 @@ class BarberoController extends Controller
      */
     public function destroy($id)
     {
-        return redirect('/barberos');
-    }
-
-    public function inicio()
-    {
-        return view('vistasBarbero.home');
-    }
-
-    public function verTurnos()
-    {
-        return view('vistasBarbero.verTurno');
-    }
-
-    public function turnosRealizados()
-    {
-        return view('vistasBarbero.historialTurno');
-    }
-
-    public function agendaTurnos()
-    {
-        return view('vistasBarbero.agenda');
+        //
     }
 }

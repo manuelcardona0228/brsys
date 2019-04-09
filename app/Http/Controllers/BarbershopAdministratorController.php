@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CargoController extends Controller
+class BarbershopAdministratorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class CargoController extends Controller
      */
     public function index()
     {
-        return view('cargos.index');
+        return view('admins.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class CargoController extends Controller
      */
     public function create()
     {
-        return view('cargos.create');
+        return view('admins.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class CargoController extends Controller
 
     public function ver()
     {
-        return view('cargos.ver');
+        return view('admins.ver');
     }
     /**
      * Display the specified resource.
@@ -54,7 +54,7 @@ class CargoController extends Controller
 
     public function editar()
     {
-        return view('cargos.editar');
+        return view('admins.editar');
     }
     
     /**
@@ -77,7 +77,7 @@ class CargoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/cargos');
+        return redirect('/admins');
     }
 
     /**
@@ -88,6 +88,6 @@ class CargoController extends Controller
      */
     public function destroy($id)
     {
-        redirec('/cargos');
+        redirec('/admins');
     }
 }

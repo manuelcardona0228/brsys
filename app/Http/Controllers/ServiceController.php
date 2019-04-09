@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admins.index');
+        return view('servicios.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admins.create');
+        return view('servicios.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class AdminController extends Controller
 
     public function ver()
     {
-        return view('admins.ver');
+        return view('servicios.ver');
     }
     /**
      * Display the specified resource.
@@ -54,7 +54,7 @@ class AdminController extends Controller
 
     public function editar()
     {
-        return view('admins.editar');
+        return view('servicios.editar');
     }
     
     /**
@@ -77,7 +77,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/admins');
+        return redirect('/servicios');
     }
 
     /**
@@ -88,6 +88,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        redirec('/admins');
+        redirec('/servicios');
     }
 }
