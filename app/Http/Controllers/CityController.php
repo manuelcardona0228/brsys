@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\City;
+use App\Department;
+use Session;
 
 class CityController extends Controller
 {
@@ -13,7 +16,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $cities = City::orderBy('id')->paginate(10);
+        return view('cities.index', compact('cities'));
     }
 
     /**
@@ -23,7 +27,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $department = Department::all()->pluck('name', 'id');
+        return view('cities.create', compact('department'));
     }
 
     /**
@@ -34,7 +39,15 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $department = $request->input('department_id');
+        $city = new City();
+        $city ->fill($input);
+        $city->department_id = $department;
+        $city ->save();        
+
+        Session::flash('estado','La ciudad ha sido añadida con éxito');
+        return redirect('/cities');
     }
 
     /**
@@ -43,9 +56,9 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(City $city)
     {
-        //
+        return view('cities.show',compact('city'));
     }
 
     /**
@@ -54,9 +67,10 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(City $city)
     {
-        //
+        $department = Department::all()->pluck('name', 'id');
+        return view('cities.edit', compact('city', 'department'));
     }
 
     /**
@@ -66,9 +80,12 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, City $city)
     {
-        //
+        $input = $request->all();
+        $city ->fill($input)->save();
+        Session::flash('estado','la ciudad se ha editado correctamente');
+        return redirect('/cities');
     }
 
     /**
@@ -77,8 +94,10 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(City $city)
     {
-        //
+        $city->delete();
+        Session::flash('estado','la ciudad se ha eliminado correctamente');
+        return redirect('/cities');
     }
 }

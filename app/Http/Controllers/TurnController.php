@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Turn;
+use App\Barber;
+use App\Service;
+use App\Customer;
+use Session;
 
 class TurnController extends Controller
 {
@@ -13,7 +18,8 @@ class TurnController extends Controller
      */
     public function index()
     {
-        return view('turnos.index');
+        $turns = Turn::orderBy('id')->paginate(10);
+        return view('turn.index', compact('turns'));
     }
 
     /**
@@ -23,7 +29,10 @@ class TurnController extends Controller
      */
     public function create()
     {
-        return view('turnos.create');
+        $barber = Barber::all()->pluck('name','id');
+        $service = Service::all()->pluck('name', 'id');
+        $customer = Customer::all()->pluck('name', 'id');
+        return view('turns.create', compact('barber', 'service', 'customer'));
     }
 
     /**
@@ -34,27 +43,33 @@ class TurnController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $turn = new Turn();
+        $barber = $request->input('barber_id');
+        $service = $request->input('service_id');
+        $customer = $request->input('customer_id');
+        $turn->fill($input);
+        $turn->barber_id = $barber;
+        $turn->service_id = $service;
+        $turn->customer_id = $customer;
+
+        $turn->save();
+
+        Session::flash('estado','el turno ha sido añadido con éxito');
+        return redirect('/turns');
+
     }
 
-    public function ver()
-    {
-        return view('turnos.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Turn $turn)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('turnos.editar');
+        return view('turns.show',compact('turn'));
     }
     
     /**
@@ -63,9 +78,12 @@ class TurnController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Turn $turn)
     {
-        //
+        $barber = Barber::all()->pluck('name', 'id');
+        $service = Service::all()->pluck('name', 'id');
+        $customer = Customer::all()->pluck('name', 'id');
+        return view('turns.edit', compact('turn', 'barber', 'service', 'customer'));
     }
 
     /**
@@ -75,9 +93,12 @@ class TurnController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Turn $turn)
     {
-        return redirect('/turnos');
+        $input = $request->all();
+        $turn->fill($input)->save();
+        Session::flash('estado','el turno se ha editado correctamente');
+        return redirect('/turns');
     }
 
     /**
@@ -86,8 +107,10 @@ class TurnController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Turn $turn)
     {
-        redirec('/turnos');
+        $turn->delete();
+        Session::flash('estado','el turno se ha eliminado correctamente');
+        redirec('/turns');
     }
 }

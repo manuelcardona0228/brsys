@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\SystemAdministrator;
+use App\TypeUser;
+use Session;
 use Illuminate\Http\Request;
 
 class SystemAdministratorController extends Controller
@@ -13,7 +15,8 @@ class SystemAdministratorController extends Controller
      */
     public function index()
     {
-        return view('admins.index');
+        $admins = SystemAdministrator::orderBy('id')->paginate(10);
+        return view('systemAdministrators.index', compact('admins'));
     }
 
     /**
@@ -23,7 +26,7 @@ class SystemAdministratorController extends Controller
      */
     public function create()
     {
-        return view('admins.create');
+        return view('systemAdministrators.create');
     }
 
     /**
@@ -34,27 +37,26 @@ class SystemAdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $admin = new SystemAdministrator();
+        $admin->fill($input);
+        $admin->type_user_id = 1;
+        $admin->save();
+
+
+        Session::flash('estado','El administrador de barberia ha sido creado con éxito!');
+        return redirect('/systemAdministrators');
     }
 
-    public function ver()
-    {
-        return view('admins.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SystemAdministrator $admin)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('admins.editar');
+        return view('systemAdministrators.show', compact('admin'));
     }
     
     /**
@@ -63,9 +65,11 @@ class SystemAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SystemAdministrator $admin)
     {
-        //
+        $cargo = TypeUsers::all()->pluck('name', 'id');
+
+        return view('systemAdministrators.edit', compact('admin','cargo'));
     }
 
     /**
@@ -75,9 +79,15 @@ class SystemAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SystemAdministrator $admin)
     {
-        return redirect('/admins');
+        $input = $request->all();
+  
+        $admin->fill($input)->save();
+  
+        Session::flash('estado', 'El administrador fue editado exitosamente!');
+
+        return redirect('/systemAdministrators');
     }
 
     /**
@@ -86,8 +96,12 @@ class SystemAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SystemAdministrator $admin)
     {
-        redirec('/admins');
+        $admin->delete();
+
+        Session::flash('estado', 'El administrador fue borrado exitosamente!');
+
+        return redirect('/systemAdministrators');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Department;
+use Session;
 
 class DepartmentController extends Controller
 {
@@ -13,7 +15,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::orderBy('id')->paginate(10);
+        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -23,7 +26,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('departments.create');
     }
 
     /**
@@ -34,7 +37,14 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $department = new Department();
+        $department ->fill($input);
+        $department ->save();        
+
+        Session::flash('estado','el departamento ha sido añadido con éxito');
+        return redirect('/departments');
     }
 
     /**
@@ -43,9 +53,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Department $department)
     {
-        //
+        return view('departments.show',compact('department'));
     }
 
     /**
@@ -54,9 +64,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Department $department)
     {
-        //
+        return view('deparments.edit', compact('department'));
     }
 
     /**
@@ -66,9 +76,12 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Department $department)
     {
-        //
+        $input = $request->all();
+        $department ->fill($input)->save();
+        Session::flash('estado','el departamento se ha editado correctamente');
+        return redirect('/departments');
     }
 
     /**
@@ -77,8 +90,10 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
-        //
+        $department->delete();
+        Session::flash('estado','el departamento se ha eliminado correctamente');
+        return redirect('/departments');
     }
 }

@@ -8,6 +8,6 @@ class StartController extends Controller
 {
     public function index()
     {
-        return view("Home.Inicio");
+        return view("Home.start");
     }
 }

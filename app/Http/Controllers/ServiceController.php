@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Service;
+use App\Barbershop;
 use Illuminate\Http\Request;
+use Session;
 
 class ServiceController extends Controller
 {
@@ -13,7 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('servicios.index');
+        $services = Service::orderBy('id')->paginate(10);
+        return view('services.index', compact('services'));
     }
 
     /**
@@ -23,7 +27,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('servicios.create');
+        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        return view('services.create', compact('barbershop'));
     }
 
     /**
@@ -34,27 +39,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $barbershop = $request->input('barbershop_id');
+        $service = new Service();
+        $service ->fill($input);
+        $service ->save();
+        $service ->barbershop_id = $barbershop;
+        Session::flash('estado','el servicio ha sido añadido con éxito');
+        return redirect('/services');
     }
 
-    public function ver()
-    {
-        return view('servicios.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Service $service)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('servicios.editar');
+        return view('services.show', compact('service'));
     }
     
     /**
@@ -63,9 +66,10 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        //
+        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        return view('services.edit', compact('service', 'barbershop'));
     }
 
     /**
@@ -75,9 +79,15 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Service $service)
     {
-        return redirect('/servicios');
+        $input = $request->all();
+  
+        $service->fill($input)->save();
+  
+        Session::flash('estado', 'el servicio fue actualizado correctamente!');
+
+        return redirect('/services');
     }
 
     /**
@@ -86,8 +96,12 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        redirec('/servicios');
+        $service->delete();
+
+        Session::flash('estado', 'El servicio se ha eliminado con exito');
+
+        redirec('/services');
     }
 }

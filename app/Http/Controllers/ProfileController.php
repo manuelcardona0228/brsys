@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Profile;
+use App\Barber;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -13,7 +16,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('perfiles.index');
+        $profiles = Profile::orderBy('id')->paginate(10);
+        return view('profiles.index');
     }
 
     /**
@@ -23,7 +27,8 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('perfiles.create');
+        $barber = Barber::all()->pluck('name', 'id');
+        return view('profiles.create', compact('barber'));
     }
 
     /**
@@ -34,27 +39,28 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $profile = new Profile();
+        $barber = $request->input('barber_id');
+        $profile->fill($input);
+        $profile->barber_id = $barber;
+
+        $profile->save();
+
+        Session::flash('estado','el perfil ha sido añadido con éxito');
+        return redirect('/profiles');
     }
 
-    public function ver()
-    {
-        return view('perfiles.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Profile $profile)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('perfiles.editar');
+        return view('profiles.show', compact('profile'));
     }
     
     /**
@@ -63,9 +69,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        //
+        $barber = Barber::all()->pluck('name', 'id');
+        return view('profiles.edit', compact('profile', 'barber'));
     }
 
     /**
@@ -75,9 +82,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile)
     {
-        return redirect('/perfiles');
+        $input = $request->all();
+        $profile->fill($input)->save();
+        Session::flash('estado', 'El perfil se ha editado correctamente');
+        return redirect('/profiles');
     }
 
     /**
@@ -86,8 +96,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Profile $profile)
     {
-        redirec('/perfiles');
+        $profile->delete();
+        Session::flash('estado', 'El perfil se ha eliminado correctamente');
+        redirec('/profiles');
     }
 }

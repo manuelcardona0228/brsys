@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Headquarter;
+use App\Barbershop;
+use App\Department;
+use App\City;
+use Session;
+
 
 class HeadquarterController extends Controller
 {
@@ -13,7 +19,8 @@ class HeadquarterController extends Controller
      */
     public function index()
     {
-        return view('sedes.index');
+        $headquarters = Headquarter::orderBy('id')->paginate(10);
+        return view('headquarters.index', compact('headquarters'));
     }
 
     /**
@@ -23,7 +30,10 @@ class HeadquarterController extends Controller
      */
     public function create()
     {
-        return view('sedes.create');
+        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        $department = Department::all()->pluck('name', 'id');
+        $city = City::all()->pluck('name', 'id');
+        return view('headquarters.create', compact('barbershop', 'department', 'city'));
     }
 
     /**
@@ -34,27 +44,32 @@ class HeadquarterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $headquarter = new Image();
+        $barbershop = $request->input('barbershop_id');
+        $department = $request->input('department_id');
+        $city = $request->input('city_id');
+        $headquarter->fill($input);
+        $headquarter->barbershop_id = $barbershop;
+        $headquarter->department_id = $department;
+        $headquarter->city_id = $city;
+        $headquarter->save();
+
+        Session::flash('estado', 'La sede se ha agregado correctamente');
+        return redirect('/headquarters');
+
     }
 
-    public function ver()
-    {
-        return view('sedes.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Headquarter $headquarter)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('sedes.editar');
+        return view('headquarters.show', compact('headquarter'));
     }
     
     /**
@@ -63,9 +78,12 @@ class HeadquarterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Headquarter $headquarter)
     {
-        //
+        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        $department = Department::all()->pluck('name', 'id');
+        $city = City::all()->pluck('name', 'id');
+        return view('headquarters.edit', compact('barbershop', 'department', 'city'));
     }
 
     /**
@@ -75,9 +93,12 @@ class HeadquarterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Headquarter $headquarter)
     {
-        return redirect('/sedes');
+        $input = $request->all();
+        $headquarter->fill($input)->save();
+        Session::flash('estado', 'La sede fue actualizada correctamente');
+        return redirect('/headquarters');
     }
 
     /**
@@ -86,8 +107,10 @@ class HeadquarterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Headquarter $headquarter)
     {
-        redirec('/sedes');
+        $headquarter->delete();
+        Session::flash('estado', 'La sede fue borrada correctamente');
+        redirec('/headquarters');
     }
 }

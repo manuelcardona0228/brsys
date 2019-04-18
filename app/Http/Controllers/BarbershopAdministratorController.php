@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\BarbershopAdministrator;
+use App\TypeUser;
+use Session;
 use Illuminate\Http\Request;
 
 class BarbershopAdministratorController extends Controller
@@ -13,7 +16,8 @@ class BarbershopAdministratorController extends Controller
      */
     public function index()
     {
-        return view('admins.index');
+        $admins = BarbershopAdministrator::orderBy('id')->paginate(10);
+        return view('barbershopAdministrators.index', compact('admins'));
     }
 
     /**
@@ -23,7 +27,7 @@ class BarbershopAdministratorController extends Controller
      */
     public function create()
     {
-        return view('admins.create');
+        return view('barbershopAdministrators.create');
     }
 
     /**
@@ -34,27 +38,26 @@ class BarbershopAdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $admin = new BarbershopAdministrator();
+        $admin->fill($input);
+        $admin->type_user_id = 2;
+        $admin->save();
+
+
+        Session::flash('estado','El administrador de barberia ha sido creado con éxito!');
+        return redirect('/barbershopAdministrators');
     }
 
-    public function ver()
-    {
-        return view('admins.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(BarbershopAdministrator $admin)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('admins.editar');
+        return view('barbershopAdministrators.show', compact('admin'));
     }
     
     /**
@@ -63,9 +66,11 @@ class BarbershopAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BarbershopAdministrator $admin)
     {
-        //
+        $cargo = TypeUsers::all()->pluck('name', 'id');
+
+        return view('barbershopAdministrators.edit', compact('admin','cargo'));
     }
 
     /**
@@ -75,9 +80,15 @@ class BarbershopAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BarbershopAdministrator $admin)
     {
-        return redirect('/admins');
+        $input = $request->all();
+  
+        $admin->fill($input)->save();
+  
+        Session::flash('estado', 'El administrador fue editado exitosamente!');
+
+        return redirect('/barbershopAdministrators');
     }
 
     /**
@@ -86,8 +97,12 @@ class BarbershopAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BarbershopAdministrator $admin)
     {
-        redirec('/admins');
+        $admin->delete();
+
+        Session::flash('estado', 'El administrador fue borrado exitosamente!');
+
+        return redirect('/barbershopAdministrators');
     }
 }

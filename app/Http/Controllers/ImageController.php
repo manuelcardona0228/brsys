@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Image;
+use App\Profile;
+use Session;
 
 class ImageController extends Controller
 {
@@ -13,7 +16,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $image = Image::orderBy('id')->paginate(10);
+        return view('images.index', compact('image'));
     }
 
     /**
@@ -23,7 +27,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        $profile = Profile::all()->pluck('name', 'id');
+        return view('images.create', compact('profile'));
     }
 
     /**
@@ -34,7 +39,17 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $image = new Image();
+        $profile = $request->input('profile_id');
+        $image->fill($input);
+        $image->profile_id = $profile;
+
+        $image->save();
+
+        Session::flash('estado', 'El perfil ha sido añadido correctamente');
+        return redirect('/images');
     }
 
     /**
@@ -43,9 +58,9 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Image $image)
     {
-        //
+        return view('images.show',compact('image'));
     }
 
     /**
@@ -54,9 +69,10 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Image $image)
     {
-        //
+        $profile = Profile::all()->pluck('name', 'id');
+        return view('images.edit', compact('image'));
     }
 
     /**
@@ -66,9 +82,12 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Image $image)
     {
-        //
+        $input = $request->all();
+        $image->fill($input)->save();
+        Session::flash('estado', 'la imagen se ha creado correctamente');
+        return redirect('/images');
     }
 
     /**
@@ -77,8 +96,10 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Image $image)
     {
-        //
+        $image->delete();
+        Session::flash('estado', 'La imagen se ha eliminado correctamente');
+        return redirect('/images');
     }
 }

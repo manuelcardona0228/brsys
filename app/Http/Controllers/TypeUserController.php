@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TypeUser;
+use Session;
 
 class TypeUserController extends Controller
 {
@@ -13,7 +15,9 @@ class TypeUserController extends Controller
      */
     public function index()
     {
-        return view('cargos.index');
+        $cargos = TypeUser::orderBy('id')->paginate(10);
+
+        return view('typeUsers.index', compact('cargos'));
     }
 
     /**
@@ -23,7 +27,7 @@ class TypeUserController extends Controller
      */
     public function create()
     {
-        return view('cargos.create');
+        return view('typeUsers.create');
     }
 
     /**
@@ -34,27 +38,26 @@ class TypeUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+ 
+        $cargo = new TypeUser();
+        $cargo ->fill($input);
+        //$cargo ->user_id = Auth::id();
+        $cargo ->save();
+
+        Session::flash('estado','El cargo ha sido creado con éxito!');
+        return redirect('/typeUsers');
     }
 
-    public function ver()
-    {
-        return view('cargos.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TypeUser $cargo)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('cargos.editar');
+        return view('typeUsers.show', compact('cargo'));
     }
     
     /**
@@ -63,9 +66,9 @@ class TypeUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TypeUser $cargo)
     {
-        //
+        return view('typeUsers.editar', compact('cargo'));
     }
 
     /**
@@ -75,8 +78,14 @@ class TypeUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TypeUser $cargo)
     {
+        $input = $request->all();
+  
+        $cargo->fill($input)->save();
+  
+        Session::flash('cargos', 'El cargo fue editado exitosamente!');
+
         return redirect('/cargos');
     }
 
@@ -86,8 +95,12 @@ class TypeUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TypeUser $cargo)
     {
-        redirec('/cargos');
+        $cargo->delete();
+
+        Session::flash('estado', 'El cargo fue borrado exitosamente!');
+
+        return redirect('/typeUsers');
     }
 }

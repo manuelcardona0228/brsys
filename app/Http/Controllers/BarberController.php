@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Barber;
+use App\Headquarter;
+use App\TypeUser;
+use Session;
 
 class BarberController extends Controller
 {
@@ -13,7 +17,8 @@ class BarberController extends Controller
      */
     public function index()
     {
-        return view('barberos.index');
+        $barberos = Barber::orderBy('id')->paginate(10);
+        return view('barberos.index', compact('barberos'));
     }
 
     /**
@@ -23,7 +28,8 @@ class BarberController extends Controller
      */
     public function create()
     {
-        return view('barberos.create');
+        $sede = Headquarter::all()->pluck('name', 'id');
+        return view('barbers.create', compact('sede'));
     }
 
     /**
@@ -34,22 +40,21 @@ class BarberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $sede = $request->input('headquarter_id');
+        $barbero = new Barber();
+        $barbero ->fill($input);
+        $barbero ->headquarter_id = $sede;
+        $barbero ->type_user_id = 3;
+        $barbero ->save();
+
+        Session::flash('estado','el barbero ha sido creado con éxito!');
+        return redirect('/barbers');
     }
 
-    public function Ver()
+    public function show(Barber $barbero)
     {
-        return view('barberos.ver');
-    }
-
-    public function show()
-    {
-        //
-    }
-
-    public function Editar()
-    {
-        return view('barberos.edit');
+        return view('barbers.show', compact('barbero'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -59,7 +64,8 @@ class BarberController extends Controller
      */
     public function edit()
     {
-        //
+        $sede = Headquarter::all()->pluck('businessName', 'id');
+        return view('barbers.edit', compact('barbero','sede'));
     }
 
     /**
@@ -69,9 +75,14 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Barber $barbero)
     {
-        return redirect('/barberos');
+        $input = $request->all();
+  
+        $barbero->fill($input)->save();
+  
+        Session::flash('estado', 'el barbero fue actualizado correctamente!');
+        return redirect('/barbers');
     }
 
     /**
@@ -80,9 +91,13 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Barber $barbero)
     {
-        return redirect('/barberos');
+        $barbero->delete();
+
+        Session::flash('estado', 'el barbero se ha eliminado correctamente');
+
+        return redirect('/barbers');
     }
 
     public function inicio()

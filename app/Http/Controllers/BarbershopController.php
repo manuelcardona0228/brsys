@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Barbershop;
+use App\BarbershopAdministrator;
+use App\Department;
+use App\City;
 use Illuminate\Http\Request;
+use Session;
 
 class BarbershopController extends Controller
 {
@@ -13,7 +18,8 @@ class BarbershopController extends Controller
      */
     public function index()
     {
-        return view('barberias.index');
+        $barbershops = Barbershop::orderBy('id')->paginate(10);
+        return view('barbershops.index', compact('barbershops'));
     }
 
     /**
@@ -23,7 +29,10 @@ class BarbershopController extends Controller
      */
     public function create()
     {
-        return view('barberias.create');
+        $department = Department::all()->pluck('name', 'id');
+        $city = City::all()->pluck('name', 'id');
+        $admin = BarbershopAdministrator::all()->pluck('name', 'id');
+        return view('barbershops.create', compact('department', 'city', 'admin'));
     }
 
     /**
@@ -34,27 +43,32 @@ class BarbershopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $department = $request->input('department_id');
+        $city = $request->input('city_id');
+        $admin = $request->input('barbershopAdministrator_id');
+        $barbershop = new Barbershop();
+        $barbershop ->fill($input);
+
+        $barbershop ->department_id = $department;
+        $barbershop ->city_id = $city;
+        $barbershop ->barbershopAdministrator_id = $admin;
+
+        $barbershop ->save();
+
+        Session::flash('estado','la barberia ha sido creada con éxito!');
+        return redirect('/barbershops');
     }
 
-    public function ver()
-    {
-        return view('barberias.ver');
-    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Barbershop $barbershop)
     {
-        //
-    }
-
-    public function editar()
-    {
-        return view('barberias.editar');
+        return view('barbershops.show', compact('barbershop'));   
     }
     
     /**
@@ -63,9 +77,12 @@ class BarbershopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Barbershop $barbershop)
     {
-        //
+        $department = Department::all()->pluck('name', 'id');
+        $city = City::all()->pluck('name', 'id');
+        $admin = BarbershopAdministrator::all()->pluck('name', 'id');
+        return view('barbershops.edit', compact('barbershop', 'department', 'city', 'admin'));
     }
 
     /**
@@ -75,9 +92,12 @@ class BarbershopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Barbershop $barbershop)
     {
-        return redirect('/barberias');
+        $input = $request->all();
+        $barbershop->fill($input)->save();
+        Session::flash('estado','La barberia se ha editado correctamente');
+        return redirect('/barbershops');
     }
 
     /**
@@ -86,8 +106,10 @@ class BarbershopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Barbershop $barbershop)
     {
-        redirec('/barberias');
+        $barbershop->delete();
+        Session::flash('estado','La barberia se ha eliminado correctamente');
+        return redirect('/barbershops');
     }
 }
