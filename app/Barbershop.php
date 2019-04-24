@@ -12,7 +12,7 @@ class Barbershop extends Model
      * @var array
      */
     protected $fillable = [
-        'nit', 'businessName', 'address','email','phone','website','department_id','city_id','barbershop_administrator_id'
+        'nit', 'businessName', 'address','email','phone','website','department_id','city_id',
     ];
 
     public function barbershopAdministrator()

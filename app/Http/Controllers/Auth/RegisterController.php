@@ -50,8 +50,22 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'birthdate' => ['required', 'date'],
+            'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nameUser' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'qualification' => ['integer'],
+            'type_user_id',
+            'department_id',
+            'city_id',
+            'barbershop_id',
+            'headquarter_id',
+            'longitude' => ['float'],
+            'latitude' => ['float'],
+
         ]);
     }
 
@@ -65,8 +79,14 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'lastName' => $data['lastName'],
+            'phone' => $data['phone'],
+            'birthdate' => $data['birthdate'],
+            'address' => $data['address'],
             'email' => $data['email'],
+            'nameUser' => $data['nameUser'],
             'password' => Hash::make($data['password']),
+            'type_user_id' => 4,
         ]);
     }
 }

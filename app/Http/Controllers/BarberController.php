@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Barber;
 use App\Headquarter;
 use App\TypeUser;
+use App\User;
 use Session;
 
 class BarberController extends Controller
@@ -17,7 +18,8 @@ class BarberController extends Controller
      */
     public function index()
     {
-        $barbers = Barber::orderBy('id')->paginate(10);
+        $type_user_id = 3;
+        $barbers = User::where('type_user_id', $type_user_id)->orderBy('id')->paginate(10);
         return view('barbers.index', compact('barbers'));
     }
 
@@ -41,18 +43,18 @@ class BarberController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $barber = new User();
         $sede = $request->input('headquarter_id');
-        $barber = new Barber();
         $barber->fill($input);
         $barber->headquarter_id = $sede;
-        $barber->type_user_id = 2;
+        $barber->type_user_id = 3;
         $barber->save();
 
         Session::flash('estado','el barbero ha sido creado con éxito!');
         return redirect('/barbers');
     }
 
-    public function show(Barber $barber)
+    public function show(User $barber)
     {
         return view('barbers.show', compact('barber'));
     }
@@ -62,7 +64,7 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barber $barber)
+    public function edit(User $barber)
     {
         $headquarters = Headquarter::all()->pluck('businessName', 'id');
         return view('barbers.edit', compact('barber','headquarters'));
@@ -75,7 +77,7 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barber $barber)
+    public function update(Request $request, User $barber)
     {
         $input = $request->all();
   
@@ -91,7 +93,7 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barber $barber)
+    public function destroy(User $barber)
     {
         $barber->delete();
 

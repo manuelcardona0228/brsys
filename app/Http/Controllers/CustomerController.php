@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\User;
 use App\TypeUser;
 use App\Department;
 use App\City;
@@ -18,7 +19,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::orderBy('id')->paginate(10);
+        $type_user_id = 4;
+        $customers = User::where('type_user_id', $type_user_id)->orderBy('id')->paginate(10);
         return view('customers.index', compact('customers'));
     }
 
@@ -43,9 +45,10 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
-        $customer = new Customer();
+        $customer = new User();
+        $department = $request->input('department_id');
         $customer->fill($input);
+        $customer->department_id = $department;
         $customer->type_user_id = 4;
         $customer->save();
 
@@ -59,7 +62,7 @@ class CustomerController extends Controller
      * @param  \App\Customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(User $customer)
     {
         return view('customers.show', compact('customer'));
     }
@@ -70,7 +73,7 @@ class CustomerController extends Controller
      * @param  \App\Customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(User $customer)
     {
         $typeUser = TypeUser::all()->pluck('name', 'id');
         $department = Department::all()->pluck('name', 'id');
@@ -85,7 +88,7 @@ class CustomerController extends Controller
      * @param  \App\Customer $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, User $customer)
     {
         $input = $request->all();
 
@@ -102,7 +105,7 @@ class CustomerController extends Controller
      * @param  \App\Customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(User $customer)
     {
         $customer->delete();
 
