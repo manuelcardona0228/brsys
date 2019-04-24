@@ -1,6 +1,8 @@
-@extends('PruebaLayaud.app')
+@extends('vistasCliente.app')
+
 
 @section('content')
+
     <div class="col-md-10 offset-md-2 mt-3 cuerpo-dos">
         <div class="card mt-3 shadow p-3 mb-5 bg-white rounded">
             <div class="card-body">
@@ -11,4 +13,7 @@
             </div>
         </div>
     </div>
-@ensection
+@endsection
+    
+
+

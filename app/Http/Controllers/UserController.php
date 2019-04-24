@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         //
     }
-    
+
     /**
      * Display the specified resource.
      *

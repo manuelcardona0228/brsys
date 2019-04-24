@@ -23,8 +23,7 @@ class CreateBarbershopsTable extends Migration
             $table->string('website', 64);
 
             $table->unsignedInteger('department_id');
-            $table->unsignedInteger('city_id');
-            $table->unsignedInteger('barbershop_administrator_id');
+            $table->unsignedInteger('city_id')->nullable();
 
             $table->timestamps();
 
@@ -36,9 +35,6 @@ class CreateBarbershopsTable extends Migration
             ->references('id')
             ->on('cities');
 
-            $table->foreign('barbershop_administrator_id')
-            ->references('id')
-            ->on('barbershop_administrators');
         });
     }
 

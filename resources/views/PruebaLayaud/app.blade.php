@@ -75,10 +75,28 @@
         <div class="col-md-2 sidebar">
         <div class="accordion" id="accordionExample">
         <div class="card" id="card-accordion">
+                <div class="card-header" id="headingCero">
+                <h5 class="mb-0">
+                    <button class="btn btn-block accordion-btn" type="button" data-toggle="collapse" data-target="#collapseCero" aria-expanded="true" aria-controls="collapseCero">
+                        <a><i class="fas fa-users"></i> Tipos De Usuarios</a> 
+                    </button>
+                </h5>
+                </div>
+
+                <div id="collapseCero" class="collapse" aria-labelledby="headingCero" data-parent="#accordionExample">
+                <div class="card-body">
+                    <ul class="botones">
+                        <a href="{{ route('typeUsers.create') }}"><li>Agregar Tipos De Usuarios</li></a>
+                        <a href="{{ route('typeUsers.index') }}"><li>Ver Tipos De Usuarios</li></a>
+                    </ul>
+                </div>
+                </div>
+            </div>
+                <div class="card" id="card-accordion">
                 <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
-                    <button class="btn btn-block accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <a><i class="fas fa-users"></i> Cargos</a> 
+                    <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                       <a><i class="fas fa-toolbox"></i> Administradores Barberias</a> 
                     </button>
                 </h5>
                 </div>
@@ -86,17 +104,17 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                        <a href="{{ route('cargos.create') }}"><li>Agregar Cargo</li></a>
-                        <a href="{{ route('cargos.index') }}"><li>Ver Cargos</li></a>
+                        <a href="{{ route('barbershopAdministrators.create') }}"><li>Agregar Administrador</li></a>
+                        <a href="{{ route('barbershopAdministrators.index') }}"><li>Ver Administradores</li></a>
                     </ul>
                 </div>
                 </div>
             </div>
-                <div class="card" id="card-accordion">
+            <div class="card" id="card-accordion">
                 <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
                     <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                       <a><i class="fas fa-toolbox"></i> Administradores</a> 
+                       <a><i class="fas fa-university"></i> Departamentos</a> 
                     </button>
                 </h5>
                 </div>
@@ -104,8 +122,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                        <a href="{{ route('admins.create') }}"><li>Agregar Administrador</li></a>
-                        <a href="{{ route('admins.index') }}"><li>Ver Administradores</li></a>
+                        <a href="{{ route('departments.create') }}"><li>Agregar Departamento</li></a>
+                        <a href="{{ route('departments.index') }}"><li>Ver Departamento</li></a>
                     </ul>
                 </div>
                 </div>
@@ -121,8 +139,8 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                    <a href="{{ route('barberos.create') }}"><li>Agregar Barbero</li></a>
-                    <a href="{{ route('barberos.index') }}"><li>Ver Barberos</li></a>
+                    <a href="{{ route('barbers.create') }}"><li>Agregar Barbero</li></a>
+                    <a href="{{ route('barbers.index') }}"><li>Ver Barberos</li></a>
                     </ul>
                 </div>
                 </div>
@@ -138,8 +156,8 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                        <a href="{{ route('users.create') }}"><li>Agregar Cliente</li></a>
-                        <a href="{{ route('users.index') }}"><li>Ver Clientes</li></a>
+                        <a href="{{ route('customers.create') }}"><li>Agregar Cliente</li></a>
+                        <a href="{{ route('customers.index') }}"><li>Ver Clientes</li></a>
                     </ul>
                 </div>
                 </div>
@@ -155,8 +173,8 @@
                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                    <a href="{{ route('barberias.create') }}"><li>Agregar Barberia</li></a>
-                    <a href="{{ route('barberias.index') }}"><li>Ver Barberias</li></a>
+                    <a href="{{ route('barbershops.create') }}"><li>Agregar Barberia</li></a>
+                    <a href="{{ route('barbershops.index') }}"><li>Ver Barberias</li></a>
                     </ul>
                 </div>
                 </div>
@@ -173,8 +191,8 @@
                 <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                    <a href="{{ route('sedes.create') }}"><li>Agregar Sede</li></a>
-                    <a href="{{ route('sedes.index') }}"><li>Ver Sedes</li></a>
+                    <a href="{{ route('headquarters.create') }}"><li>Agregar Sede</li></a>
+                    <a href="{{ route('headquarters.index') }}"><li>Ver Sedes</li></a>
                     </ul>
                 </div>
                 </div>
@@ -190,8 +208,8 @@
                 <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                        <a href="{{ route('servicios.create') }}"><li>Agregar Servicios</li></a>
-                        <a href="{{ route('servicios.index') }}"><li>Ver Servicios</li></a>
+                        <a href="{{ route('services.create') }}"><li>Agregar Servicios</li></a>
+                        <a href="{{ route('services.index') }}"><li>Ver Servicios</li></a>
                     </ul>
                 </div>
                 </div>
@@ -207,8 +225,8 @@
                 <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                    <a href="{{ route('turnos.create') }}"><li>Agregar Turno</li></a>
-                    <a href="{{ route('turnos.index') }}"><li>Ver Turnos</li></a>
+                    <a href="{{ route('turns.create') }}"><li>Agregar Turno</li></a>
+                    <a href="{{ route('turns.index') }}"><li>Ver Turnos</li></a>
                     </ul>
                 </div>
                 </div>
@@ -224,8 +242,26 @@
                 <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                        <a href="{{ route('perfiles.create') }}"><li>Agregar Perfil</li></a>
-                        <a href="{{ route('perfiles.index') }}"><li>Ver Perfiles</li></a>
+                        <a href="{{ route('profiles.create') }}"><li>Agregar Perfil</li></a>
+                        <a href="{{ route('profiles.index') }}"><li>Ver Perfiles</li></a>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div class="card" id="card-accordion">
+                <div class="card-header" id="headingTen">
+                <h5 class="mb-0">
+                    <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                       <a><i class="fas fa-gopuram"></i> Ciudades</a> 
+                    </button>
+                </h5>
+                </div>
+
+                <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+                <div class="card-body">
+                    <ul class="botones">
+                        <a href="{{ route('cities.create') }}"><li>Agregar Ciudad</li></a>
+                        <a href="{{ route('cities.index') }}"><li>Ver Departamento</li></a>
                     </ul>
                 </div>
                 </div>

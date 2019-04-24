@@ -15,10 +15,6 @@
             <div class="card-header text-white bg-dark">{{ __('Especifique la información del cliente a crear.') }}</div>
             <div class="card-body">
                 {!! Form::open(['route' => 'customers.store']) !!}
-                <div class="form-group">
-                    {!! Form::label('document', 'Documento', ['class' => 'control-label']) !!}
-                    {!! Form::text('document', null, ['class' => 'form-control']) !!}
-                </div>
 
                 <div class="form-group">
                     {!! Form::label('name', 'Nombres', ['class' => 'control-label']) !!}
@@ -62,12 +58,12 @@
 
                 <div class="form-group">
                     {!! Form::label('department_id', 'Departamento', ['class' => 'control-label']) !!}
-                    {!! Form::text('department_id', null, ['class' => 'form-control']) !!}
+                    {!! Form::select('department_id', $department, $department,['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('city_id', 'Ciudad', ['class' => 'control-label']) !!}
-                    {!! Form::text('city_id', null, ['class' => 'form-control']) !!}
+                    {!! Form::select('city_id', $city, $city,['class' => 'form-control']) !!}
                 </div>
 
                 {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}

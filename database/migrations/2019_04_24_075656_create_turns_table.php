@@ -27,7 +27,7 @@ class CreateTurnsTable extends Migration
 
             $table->foreign('barber_id')
             ->references('id')
-            ->on('barbers');
+            ->on('users');
 
             $table->foreign('service_id')
             ->references('id')
@@ -35,7 +35,7 @@ class CreateTurnsTable extends Migration
 
             $table->foreign('customer_id')
             ->references('id')
-            ->on('customers');
+            ->on('users');
 
             
         });

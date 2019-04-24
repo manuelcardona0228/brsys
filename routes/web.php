@@ -17,66 +17,69 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Route::get('/inicioAdmin', 'StartController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/inicio', 'InicioController@index');
+Route::group(['middleware' => 'systemAdmin'], function(){
+
+    Route::resource('barbershopAdministrators', 'BarbershopAdministratorController');
+    Route::resource('barbers', 'BarberController');
+    Route::resource('barbershops', 'BarbershopController');
+    Route::resource('headquarters', 'HeadquarterController');
+    Route::resource('turns', 'TurnController');
+    Route::resource('customers', 'CustomerController');
+    Route::resource('typeUsers', 'TypeUserController');
+    Route::resource('systemAdministrators', 'SystemAdministratorController');
+    Route::resource('services', 'ServiceController');
+    Route::resource('profiles', 'ProfileController');
+    Route::resource('departments', 'DepartmentController');
+    Route::resource('cities', 'CityController');
+
+});
+
+Route::group(['middleware' => 'barbershopAdmin'], function(){
+    Route::get('/inicioAdmin', 'BarbershopAdministratorController@inicio');
+});
+
+Route::group(['middleware' => 'barber'], function(){
+
+    Route::get('/inicioBarbero', 'BarberController@inicio');
+    Route::get('/listaTurnos', 'BarberController@verTurnos');
+    Route::get('/histTurnosB', 'BarberController@turnosRealizados');
+    Route::get('/agendaBarbero', 'BarberController@agendaTurnos');
+});
+
+Route::group(['middleware' => 'customer'], function(){
+
+    Route::get('/inicioUser', 'UserController@inicio');
+    Route::get('/pedirTurno', 'UserController@pedirTurno');
+    Route::get('/buscarBarbero', 'UserController@buscarBarberos');
+    Route::get('/perfilBarbero', 'UserController@verPerfil');
+    Route::get('/buscarServicios', 'UserController@buscarServicios');
+    Route::get('/verServicios', 'UserController@verServicios');
+});
 
 
-Route::resource('barberos', 'BarberoController');
-Route::get('/verBarbero', 'BarberoController@Ver');
-Route::get('/editarBarbero', 'BarberoController@Editar');
-Route::get('/inicioBarbero', 'BarberoController@inicio');
-Route::get('/listaTurnos', 'BarberoController@verTurnos');
-Route::get('/histTurnosB', 'BarberoController@turnosRealizados');
-Route::get('/agendaBarbero', 'BarberoController@agendaTurnos');
+Route::get('/errorSysAdmin', ['as' => 'vistaErrorSysAdmin.error', function(){
+    return view('vistaErrorSysAdmin.error');
+}]);
 
+Route::get('/errorBarberAdmin', ['as' => 'vistasAdminBarberia.error', function(){
+    return view('vistasAdminBarberia.error');
+}]);
 
-Route::resource('barberias', 'BarberiaController');
-Route::get('/verBarberia', 'BarberiaController@ver');
-Route::get('/editarBarberia', 'BarberiaController@editar');
+Route::get('/errorCustomer', ['as' => 'vistasCliente.error', function(){
+    return view('vistasCliente.error');
+}]);
 
-
-Route::resource('cargos', 'CargoController');
-Route::get('/verCargo', 'CargoController@ver');
-Route::get('/editarCargo', 'CargoController@editar');
-
-
-Route::resource('sedes', 'SedeController');
-Route::get('/verSede', 'SedeController@ver');
-Route::get('/editarSede', 'SedeController@editar');
-
-
-Route::resource('turnos', 'TurnoController');
-Route::get('/verTurno', 'TurnoController@ver');
-Route::get('/editarTurno', 'TurnoController@editar');
-
-
-Route::resource('users', 'UserController');
-Route::get('/verUsers', 'UserController@ver');
-Route::get('/editarUsers', 'UserController@editar');
-Route::get('/inicioUser', 'UserController@inicio');
-Route::get('/pedirTurno', 'UserController@pedirTurno');
-Route::get('/buscarBarbero', 'UserController@buscarBarberos');
-Route::get('/perfilBarbero', 'UserController@verPerfil');
-Route::get('/buscarServicios', 'UserController@buscarServicios');
-Route::get('/verServicios', 'UserController@verServicios');
+Route::get('/errorBarber', ['as' => 'vistasBarbero.error', function(){
+    return view('vistasBarbero.error');
+}]);
 
 
 
-Route::resource('cargo', 'CargoController');
-Route::get('/verCargo', 'CargoController@ver');
-Route::get('/editarCargo', 'CargoController@editar');
 
 
-Route::resource('admins', 'AdminController');
-Route::get('/verAdmin', 'AdminController@ver');
-Route::get('/editarAdmin', 'AdminController@editar');
 
-Route::resource('servicios', 'ServicioController');
-Route::get('/verServicio', 'ServicioController@ver');
-Route::get('/editarServicio', 'ServicioController@editar');
 
-Route::resource('perfiles', 'PerfilController');
-Route::get('/verPerfil', 'PerfilController@ver');
-Route::get('/editarPerfil', 'PerfilController@editar');
 

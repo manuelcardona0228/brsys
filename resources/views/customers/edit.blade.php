@@ -21,11 +21,6 @@
                 ]) !!}
 
                 <div class="form-group">
-                    {!! Form::label('document', 'Documento', ['class' => 'control-label']) !!}
-                    {!! Form::text('document', null, ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
                     {!! Form::label('name', 'Nombres', ['class' => 'control-label']) !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
                 </div>

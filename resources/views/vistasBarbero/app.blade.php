@@ -102,8 +102,7 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="botones">
-                                <a href="{{ route('cargos.create') }}"><li><i class="fas fa-calendar-check"></i> Pedir Turno</li></a>
-                                <a href="{{ route('cargos.index') }}"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
+                                <a href="/histTurnosB"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
                             </ul>
                         </div>
                     </div>
@@ -120,8 +119,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="botones">
-                                <a href="{{ route('admins.create') }}"><li>Agregar Administrador</li></a>
-                                <a href="{{ route('admins.index') }}"><li>Ver Administradores</li></a>
+                                <a href="/"><li>Modificar Perfil</li></a>
                             </ul>
                         </div>
                     </div>
