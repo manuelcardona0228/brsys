@@ -22,4 +22,14 @@ class BarbershopAdministrator extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function typeUser()
+    {
+        return $this->hasOne('App\TypeUser');
+    }
+
+    public function barbershop()
+    {
+        return $this->hasOne('App\Barbershop');
+    }
 }

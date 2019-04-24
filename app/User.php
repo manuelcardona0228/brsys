@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'lastName', 'phone', 'birthdate', 'address','email', 'nameUser','password', 'qualification', 'type_user_id', 'department_id', 'city_id', 'headquarter_id', 'longitude', 'latitude',
     ];
 
     /**
@@ -27,4 +27,34 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function typeUser()
+    {
+        return $this->hasOne('App\TypeUser');
+    }
+
+    public function turns()
+    {
+        return $this->hasMany('App\Turn');
+    }
+
+    public function city()
+    {
+        return $this->hasOne('App\City');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
+
+    public function headquarter()
+    {
+        return $this->hasOne('App\Headquarter');
+    }
+
+    public function barbershop()
+    {
+        return $this->hasOne('App\Barbershop');
+    }
 }

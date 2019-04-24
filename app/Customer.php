@@ -18,4 +18,19 @@ class Customer extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function typeUser()
+    {
+        return $this->hasOne('App\TypeUser');
+    }
+
+    public function turns()
+    {
+        return $this->hasMany('App\Turn');
+    }
+
+    public function city()
+    {
+        return $this->hasOne('App\City');
+    }
 }

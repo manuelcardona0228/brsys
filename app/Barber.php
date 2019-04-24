@@ -23,4 +23,24 @@ class Barber extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function typeUser()
+    {
+        return $this->hasOne('App\TypeUser');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
+
+    public function headquarter()
+    {
+        return $this->hasOne('App\Headquarter');
+    }
+
+    public function turn()
+    {
+        return $this->hasMany('App\Turn');
+    }
 }
