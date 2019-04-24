@@ -23,6 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //return view('home');
+        $actual_user = \Auth::user();
+        if($actual_user->type_user_id == 1)
+            return view('homeSystemAddmin.start');
+        if($actual_user->type_user_id == 2)
+            return view('vistasAdminBarberia.start');
+        if($actual_user->type_user_id == 3)
+            return view('vistasBarbero.home');
+        if($actual_user->type_user_id == 4)
+            return view('vistasCliente.home');
     }
 }

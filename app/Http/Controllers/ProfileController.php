@@ -17,7 +17,7 @@ class ProfileController extends Controller
     public function index()
     {
         $profiles = Profile::orderBy('id')->paginate(10);
-        return view('profiles.index');
+        return view('profiles.index', compact('profiles'));
     }
 
     /**

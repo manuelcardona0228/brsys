@@ -17,8 +17,8 @@ class BarberController extends Controller
      */
     public function index()
     {
-        $barberos = Barber::orderBy('id')->paginate(10);
-        return view('barberos.index', compact('barberos'));
+        $barbers = Barber::orderBy('id')->paginate(10);
+        return view('barbers.index', compact('barbers'));
     }
 
     /**
@@ -28,8 +28,8 @@ class BarberController extends Controller
      */
     public function create()
     {
-        $sede = Headquarter::all()->pluck('name', 'id');
-        return view('barbers.create', compact('sede'));
+        $headquarters = Headquarter::all()->pluck('businessName', 'id');
+        return view('barbers.create', compact('headquarters'));
     }
 
     /**
@@ -42,19 +42,19 @@ class BarberController extends Controller
     {
         $input = $request->all();
         $sede = $request->input('headquarter_id');
-        $barbero = new Barber();
-        $barbero ->fill($input);
-        $barbero ->headquarter_id = $sede;
-        $barbero ->type_user_id = 3;
-        $barbero ->save();
+        $barber = new Barber();
+        $barber->fill($input);
+        $barber->headquarter_id = $sede;
+        $barber->type_user_id = 2;
+        $barber->save();
 
         Session::flash('estado','el barbero ha sido creado con éxito!');
         return redirect('/barbers');
     }
 
-    public function show(Barber $barbero)
+    public function show(Barber $barber)
     {
-        return view('barbers.show', compact('barbero'));
+        return view('barbers.show', compact('barber'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -62,10 +62,10 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Barber $barber)
     {
-        $sede = Headquarter::all()->pluck('businessName', 'id');
-        return view('barbers.edit', compact('barbero','sede'));
+        $headquarters = Headquarter::all()->pluck('businessName', 'id');
+        return view('barbers.edit', compact('barber','headquarters'));
     }
 
     /**
@@ -75,11 +75,11 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barber $barbero)
+    public function update(Request $request, Barber $barber)
     {
         $input = $request->all();
   
-        $barbero->fill($input)->save();
+        $barber->fill($input)->save();
   
         Session::flash('estado', 'el barbero fue actualizado correctamente!');
         return redirect('/barbers');
@@ -91,9 +91,9 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barber $barbero)
+    public function destroy(Barber $barber)
     {
-        $barbero->delete();
+        $barber->delete();
 
         Session::flash('estado', 'el barbero se ha eliminado correctamente');
 

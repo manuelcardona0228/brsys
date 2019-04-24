@@ -39,7 +39,6 @@ class TypeUserController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
- 
         $cargo = new TypeUser();
         $cargo ->fill($input);
         //$cargo ->user_id = Auth::id();
@@ -63,12 +62,12 @@ class TypeUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TypeUser  $cargo
      * @return \Illuminate\Http\Response
      */
     public function edit(TypeUser $cargo)
     {
-        return view('typeUsers.editar', compact('cargo'));
+        return view('typeUsers.edit', compact('cargo'));
     }
 
     /**
@@ -84,9 +83,9 @@ class TypeUserController extends Controller
   
         $cargo->fill($input)->save();
   
-        Session::flash('cargos', 'El cargo fue editado exitosamente!');
+        Session::flash('estado', 'El cargo fue editado exitosamente!');
 
-        return redirect('/cargos');
+        return redirect('/typeUsers');
     }
 
     /**

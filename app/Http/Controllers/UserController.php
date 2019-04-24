@@ -36,11 +36,7 @@ class UserController extends Controller
     {
         //
     }
-
-    public function ver()
-    {
-        return view('users.ver');
-    }
+    
     /**
      * Display the specified resource.
      *
@@ -52,10 +48,6 @@ class UserController extends Controller
         //
     }
 
-    public function editar()
-    {
-        return view('users.editar');
-    }
     
     /**
      * Show the form for editing the specified resource.

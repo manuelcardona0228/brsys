@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Http\Request;
 use App\BarbershopAdministrator;
 use App\TypeUser;
 use Session;
-use Illuminate\Http\Request;
 
 class BarbershopAdministratorController extends Controller
 {
@@ -55,9 +56,9 @@ class BarbershopAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(BarbershopAdministrator $admin)
+    public function show(BarbershopAdministrator $administrator)
     {
-        return view('barbershopAdministrators.show', compact('admin'));
+        return view('barbershopAdministrators.show', compact('administrator'));
     }
     
     /**
@@ -68,7 +69,7 @@ class BarbershopAdministratorController extends Controller
      */
     public function edit(BarbershopAdministrator $admin)
     {
-        $cargo = TypeUsers::all()->pluck('name', 'id');
+        $cargo = TypeUser::all()->pluck('name', 'id');
 
         return view('barbershopAdministrators.edit', compact('admin','cargo'));
     }

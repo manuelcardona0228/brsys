@@ -83,7 +83,7 @@ class HeadquarterController extends Controller
         $barbershop = Barbershop::all()->pluck('businessName', 'id');
         $department = Department::all()->pluck('name', 'id');
         $city = City::all()->pluck('name', 'id');
-        return view('headquarters.edit', compact('barbershop', 'department', 'city'));
+        return view('headquarters.edit', compact('headquarter', 'barbershop', 'department', 'city'));
     }
 
     /**

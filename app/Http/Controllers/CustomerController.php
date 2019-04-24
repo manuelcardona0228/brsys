@@ -73,8 +73,9 @@ class CustomerController extends Controller
     public function edit(Customer $customer)
     {
         $typeUser = TypeUser::all()->pluck('name', 'id');
+        $department = Department::all()->pluck('name', 'id');
         $city = City::all()->pluck('name', 'id');
-        return view('customers.edit', compact('customer', 'typeUser', 'city'));
+        return view('customers.edit', compact('customer', 'typeUser', 'department','city'));
     }
 
     /**

@@ -19,7 +19,7 @@ class TurnController extends Controller
     public function index()
     {
         $turns = Turn::orderBy('id')->paginate(10);
-        return view('turn.index', compact('turns'));
+        return view('turns.index', compact('turns'));
     }
 
     /**
@@ -53,6 +53,7 @@ class TurnController extends Controller
         $turn->barber_id = $barber;
         $turn->service_id = $service;
         $turn->customer_id = $customer;
+        $turn->state = true;
 
         $turn->save();
 
