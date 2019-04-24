@@ -47,10 +47,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="Apellido" placeholde="Apellidos">{{ __('Apellidos') }}</label>
+                                <label for="lastName" placeholde="Apellidos">{{ __('Apellidos') }}</label>
 
                                 
-                                    <input id="apellido" type="text" class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" name="apellido" value="{{ old('apellido') }}" required autofocus>
+                                    <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" required autofocus>
 
                                     @if ($errors->has('apellido'))
                                         <span class="invalid-feedback" role="alert">
@@ -64,11 +64,37 @@
                                 <label for="Telefono" placeholde="Telefono">{{ __('Telefono') }}</label>
 
                                 
-                                    <input id="telefono" type="number" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}" required autofocus>
+                                    <input id="phone" type="number" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('telefono') }}" required autofocus>
 
                                     @if ($errors->has('telefono'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('telefono') }}</strong>
+                                        </span>
+                                    @endif
+                                
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="birthdate" >{{ __('Fecha De Nacimiento') }}</label>
+
+                                    <input id="birthdate" type="date" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate') }}" required>
+
+                                    @if ($errors->has('birthdate'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('birthdate') }}</strong>
+                                        </span>
+                                    @endif
+                                
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="address" >{{ __('Dirección') }}</label>
+
+                                    <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required>
+
+                                    @if ($errors->has('addres'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('address') }}</strong>
                                         </span>
                                     @endif
                                 
@@ -82,20 +108,6 @@
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="FechaNac" placeholde="Fecha De Nacimiento">{{ __('FechaNac') }}</label>
-
-                                
-                                    <input id="fechaNac" type="date" class="form-control{{ $errors->has('fechaNac') ? ' is-invalid' : '' }}" name="fechaNac" value="{{ old('fechaNac') }}" required autofocus>
-
-                                    @if ($errors->has('fechaNac'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('fechaNac') }}</strong>
                                         </span>
                                     @endif
                                 

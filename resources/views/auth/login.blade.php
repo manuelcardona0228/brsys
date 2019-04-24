@@ -80,12 +80,11 @@
                             </div>
 
                             <div class="form-group">
-                                    <!--
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Iniciar') }}
                                     </button>
-                                    -->
-                                    <a href="/inicio" class="btn btn-primary">Iniciar</a>
+                                    
+                                    
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
