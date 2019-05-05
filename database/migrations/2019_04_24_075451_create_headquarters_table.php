@@ -22,11 +22,11 @@ class CreateHeadquartersTable extends Migration
             $table->string('phone', 13);
             
             $table->unsignedInteger('barbershop_id');
-            $table->unsignedInteger('department_id');
-            $table->unsignedInteger('city_id');
+            $table->unsignedInteger('department_id')->nullable();
+            $table->unsignedInteger('city_id')->nullable();
 
-            $table->float('longitude');
-            $table->float('latitude');
+            $table->float('longitude')->nullable();
+            $table->float('latitude')->nullable();
 
             $table->timestamps();
 

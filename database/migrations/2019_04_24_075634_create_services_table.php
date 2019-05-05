@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->text('description');
             $table->float('value');
             $table->string('name', 40);
-            $table->string('img', 255);
+            $table->string('img', 255)->nullable();
 
             $table->unsignedInteger('barbershop_id');
 

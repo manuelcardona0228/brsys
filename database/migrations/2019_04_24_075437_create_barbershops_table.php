@@ -22,7 +22,7 @@ class CreateBarbershopsTable extends Migration
             $table->string('phone', 13);
             $table->string('website', 64);
 
-            $table->unsignedInteger('department_id');
+            $table->unsignedInteger('department_id')->nullable();
             $table->unsignedInteger('city_id')->nullable();
 
             $table->timestamps();
