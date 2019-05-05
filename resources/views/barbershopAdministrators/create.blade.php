@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     {!! Form::label('birthdate', 'Fecha De Nacimiento', ['class' => 'control-label']) !!}
-                    {!! Form::text('birthdate', null, ['class' => 'form-control']) !!}
+                    {!! Form::date('birthdate', null, ['class' => 'form-control']) !!}
                 </div>
                 
                 <div class="form-group">
@@ -54,6 +54,11 @@
                 <div class="form-group">
                     {!! Form::label('password', 'Contraseña', ['class' => 'control-label']) !!}
                     {!! Form::text('password', null, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('barbershop_id', 'Barberia', ['class' => 'control-label']) !!}
+                    {!! Form::select('barbershop_id', $barbershops, null,['class' => 'form-control']) !!}
                 </div>
 
                 {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}

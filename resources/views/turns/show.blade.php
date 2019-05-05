@@ -25,6 +25,13 @@
                 <td>Hora</td>
                   <td>{{ $turn->hour }}</td>
                 </tr>
+                <td>Estado</td>
+                @if($turn->state = 1)
+                  <td>Pendiente</td>
+                @else
+                  <td>Realizado</td>
+                @endif
+                </tr>
               <tr>
                 <td>Creado en</td>
                 <td>{{ $turn->created_at }}</td>

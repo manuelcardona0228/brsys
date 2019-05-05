@@ -1,4 +1,4 @@
-@extends('PruebaLayaud.app')
+@extends('vistasAdminBarberia.app')
 
 @section('content')
     
@@ -10,46 +10,46 @@
               <table class="table table-striped table-hover">
                 <tr>
                   <td style="width: 200px;">Nit</td>
-                  <td>{{ $headquarters->nit }}</td>
+                  <td>{{ $headquarterAdmin->nit }}</td>
                 </tr>
                 <tr>
                   <td style="width: 200px;">Razón Social</td>
-                  <td>{{ $headquarters->businessName }}</td>
+                  <td>{{ $headquarterAdmin->businessName }}</td>
                 </tr>
                 <td>Dirección</td>
-                  <td>{{ $headquarters->address }}</td>
+                  <td>{{ $headquarterAdmin->address }}</td>
                 </tr>
                 <td>Telefono</td>
-                  <td>{{ $headquarters->phone }}</td>
+                  <td>{{ $headquarterAdmin->phone }}</td>
                 </tr>
                 <td>Barberia</td>
-                  <td>{{ $headquarters->barbershop_id }}</td>
+                  <td>{{ $headquarterAdmin->barbershop_id }}</td>
                 </tr>
                 <td>Departamento</td>
-                  <td>{{ $headquarters->department_id }}</td>
+                  <td>{{ $headquarterAdmin->department_id }}</td>
                 </tr>
                 <td>City</td>
-                  <td>{{ $headquarters->city_id }}</td>
+                  <td>{{ $headquarterAdmin->city_id }}</td>
                 </tr>
                 <tr>
                   <td>Creado en</td>
-                  <td>{{ $headquarters->created_at }}</td>
+                  <td>{{ $headquarterAdmin->created_at }}</td>
                 </tr>
               <tr>
                 <td>Actualizado en</td>
-                <td>{{ $headquarters->updated_at }}</td>
+                <td>{{ $headquarterAdmin->updated_at }}</td>
               </tr>
               </table>
 
               <hr>
 
-              <a href="{{ route('headquarters.index') }}" class="btn btn-info btn-block">Volver al listado</a>
+              <a href="{{ route('headquarterAdmins.index') }}" class="btn btn-info btn-block">Volver al listado</a>
               </br>
-              <a href="{{ route('headquarters.edit', $headquarters->id) }}" class="btn btn-warning btn-block">Editar</a>
+              <a href="{{ route('headquarterAdmins.edit', $headquarterAdmin->id) }}" class="btn btn-warning btn-block">Editar</a>
               </br>
               {!! Form::open([
                   'method' => 'DELETE',
-                  'route' => ['headquarters.destroy', $headquarters->id],
+                  'route' => ['headquarterAdmins.destroy', $headquarterAdmin->id],
                   'onsubmit' => 'return confirm("¿Esta seguro de borrar esta sede?");'
               ]) !!}
               {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-block']) !!}

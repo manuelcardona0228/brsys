@@ -10,7 +10,6 @@
     </div>
 @endif
 
-@section('content')
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
         <h1 class="lines-effect mt-2">Crear Cargo</h1>
         <hr>

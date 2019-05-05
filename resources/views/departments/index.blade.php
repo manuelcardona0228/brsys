@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
-    <h1 class="lines-effect">Lista de cargos</h1>
+    <h1 class="lines-effect">Lista De Departamentos</h1>
     <hr>
     <a href="{!! url('typeUsers/create') !!}" class="btn btn-success btn-block">Crear Cargo</a></p>
     <hr>
@@ -25,13 +25,14 @@
                 <th scope="row">{{ $department->id }}</th>
                 <td>{{ $department->name }}</td>
                 <td>{{ $department->description }}</td>
+                <td>{{ $department->state }}</td>
                 <td>{{ $department->updated_at }}</td>
                 <td><a href="{{ route('departments.show', $department->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('departments.edit', $department->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>
                 <td>{!! Form::open([
                     'method' => 'DELETE',
-                    'route' => ['typeUsers.destroy', $department->id],
-                    'onsubmit' => 'return confirm("¿Esta seguro de borrar este cargo?");'
+                    'route' => ['departments.destroy', $department->id],
+                    'onsubmit' => 'return confirm("¿Esta seguro de borrar este departamento?");'
                 ]) !!}
                 {!! Form::submit('Borrar', ['class' => 'btn btn-outline-danger btn-sm']) !!}
                 {!! Form::close() !!}</td>

@@ -48,16 +48,6 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password', 'Contraseña', ['class' => 'control-label']) !!}
-                    {!! Form::text('password', null, ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('qualification', 'Calificación', ['class' => 'control-label']) !!}
-                    {!! Form::text('qualification', null, ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
                     {!! Form::label('headquarter_id', 'Sede', ['class' => 'control-label']) !!}
                     {!! Form::select('headquarter_id', $headquarters, $headquarters,['class' => 'form-control']) !!}
                 </div>

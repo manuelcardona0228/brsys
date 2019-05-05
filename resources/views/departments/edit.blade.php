@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
-        <h1 class="lines-effect mt-2">Editar Cargo</h1>
+        <h1 class="lines-effect mt-2">Editar Departamento</h1>
         <hr>
 
         <div class="card">
-            <div class="card-header text-white bg-dark">{{ __('Especifique la información del cargo a editar.') }}</div>
+            <div class="card-header text-white bg-dark">{{ __('Especifique la información del departamento a editar.') }}</div>
                 <div class="card-body">
-                {!! Form::model($cargo, [
+                {!! Form::model($department, [
                         'method' => 'PUT',
-                        'route' => ['typeUsers.update', $cargo->id]
+                        'route' => ['departments.update', $department->id]
                     ]) !!}
                     <div class="form-group">
                         {!! Form::label('name', 'Nombre', ['class' => 'control-label']) !!}

@@ -1,18 +1,26 @@
-@extends('PruebaLayaud.app')
+@extends('vistasAdminBarberia.app')
 
 @section('content')
 
-    <div class="col-md-10 offset-md-2 mt-4 main cuerpo-dos">
-        <h1 class="lines-effect mt-2">Editar Administrador</h1>
+    @if($errors->any())
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
+    <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
+        <h1 class="lines-effect mt-2">Editar Barbero</h1>
         <hr>
-            <div class="card">
-                <div class="card-header text-white bg-dark">{{ __('Especifique que información que va a editar.') }}</div>
+
+        <div class="card">
+            <div class="card-header text-white bg-dark">{{ __('Especifique la información del barbero a editar.') }}</div>
                 <div class="card-body">
-                {!! Form::model($barbershopAdministrator, [
+                {!! Form::model($barberAdmin, [
                     'method' => 'PUT',
-                    'route' => ['barbershopAdministrators.update', $barbershopAdministrator->id]
+                    'route' => ['barberAdmins.update', $barberAdmin->id]
                 ]) !!}
-                    
                 <div class="form-group">
                     {!! Form::label('name', 'Nombres', ['class' => 'control-label']) !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -49,16 +57,20 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password', 'Contraseña', ['class' => 'control-label']) !!}
-                    {!! Form::text('password', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('qualification', 'Calificación', ['class' => 'control-label']) !!}
+                    {!! Form::text('qualification', null, ['class' => 'form-control']) !!}
                 </div>
-                    
-                {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('barbershopAdministrators.index') }}" class="btn btn-secondary">Volver</a>
 
+                <div class="form-group">
+                    {!! Form::label('headquarter_id', 'Sede', ['class' => 'control-label']) !!}
+                    {!! Form::select('headquarter_id', $headquarters, $headquarters,['class' => 'form-control']) !!}
+                </div>
+
+                {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('barberAdmins.index') }}" class="btn btn-secondary">Volver</a>
                 {!! Form::close() !!}
 
-                </div>
             </div>
     </div>
+
 @endsection

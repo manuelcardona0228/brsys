@@ -8,9 +8,9 @@
         <div class="card">
             <div class="card-header text-white bg-dark">{{ __('Especifique la información del cargo a editar.') }}</div>
                 <div class="card-body">
-                    {!! Form::model($cargo, [
+                    {!! Form::model($typeUser, [
                         'method' => 'PUT',
-                        'route' => ['typeUsers.update', $cargo->id]
+                        'route' => ['typeUsers.update', $typeUser->id]
                     ]) !!}
                     <div class="form-group">
                         {!! Form::label('name', 'Nombre', ['class' => 'control-label']) !!}

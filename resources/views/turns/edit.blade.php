@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header text-white bg-dark">{{ __('Especifique la información de a turno a editar.') }}</div>
                 <div class="card-body">
-                {!! Form::model($turn, [
+                    {!! Form::model($turn, [
                         'method' => 'PUT',
                         'route' => ['turns.update', $turn->id]
                     ]) !!}

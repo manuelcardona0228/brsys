@@ -10,35 +10,33 @@
               <table class="table table-striped table-hover">
                 <tr>
                   <td style="width: 200px;">Nombre</td>
-                  <td>{{ $cargo->name }}</td>
+                  <td>{{ $typeUser->name }}</td>
                 </tr>
                 <tr>
                   <td style="width: 200px;">Descripción</td>
-                  <td>{{ $cargo->description }}</td>
-                </tr>
-                <tr>
-                  <td>Estado</td>
-                  <td>{{ $cargo->state }}</td>
+                  <td>{{ $typeUser->description }}</td>
                 </tr>
                 <tr>
                   <td>Creado en</td>
-                  <td>{{ $cargo->created_at }}</td>
+                  <td>{{ $typeUser->created_at }}</td>
                 </tr>
               <tr>
                 <td>Actualizado en</td>
-                <td>{{ $cargo->updated_at }}</td>
+                <td>{{ $typeUser->updated_at }}</td>
               </tr>
               </table>
 
               <hr>
 
               <a href="{{ route('typeUsers.index') }}" class="btn btn-info btn-block">Volver al listado</a>
+              
               <br>
-              <a href="{{ route('typeUsers.edit', $cargo->id) }}" class="btn btn-warning btn-block">Editar</a>
+
+              <a href="{{ route('typeUsers.edit', $typeUser->id) }}" class="btn btn-warning btn-block">Editar</a>
               <br>
               {!! Form::open([
                   'method' => 'DELETE',
-                  'route' => ['typeUsers.destroy', $cargo->id],
+                  'route' => ['typeUsers.destroy', $typeUser->id],
                   'onsubmit' => 'return confirm("¿Esta seguro de borrar este cargo?");'
               ]) !!}
               {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-block']) !!}

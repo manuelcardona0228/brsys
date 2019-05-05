@@ -3,7 +3,7 @@
 @section('content')
     
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
-      <h1 class="lines-effect">Información Del Cargo</h1>
+      <h1 class="lines-effect">Información Del Departamento</h1>
         <div class="card mt-2">
           <div class="card-header text-white bg-dark">{{ __('Cargo Seleccionado') }}</div>
             <div class="card-body">
