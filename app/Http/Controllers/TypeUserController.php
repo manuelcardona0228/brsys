@@ -15,9 +15,9 @@ class TypeUserController extends Controller
      */
     public function index()
     {
-        $cargos = TypeUser::orderBy('id')->paginate(10);
+        $typeUsers = TypeUser::orderBy('id')->paginate(10);
 
-        return view('typeUsers.index', compact('cargos'));
+        return view('typeUsers.index', compact('typeUsers'));
     }
 
     /**
@@ -39,10 +39,10 @@ class TypeUserController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $cargo = new TypeUser();
-        $cargo ->fill($input);
+        $typeUser = new TypeUser();
+        $typeUser ->fill($input);
         //$cargo ->user_id = Auth::id();
-        $cargo ->save();
+        $typeUser ->save();
 
         Session::flash('estado','El cargo ha sido creado con éxito!');
         return redirect('/typeUsers');
@@ -54,9 +54,9 @@ class TypeUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(TypeUser $cargo)
+    public function show(TypeUser $typeUser)
     {
-        return view('typeUsers.show', compact('cargo'));
+        return view('typeUsers.show', compact('typeUser'));
     }
     
     /**
@@ -65,9 +65,9 @@ class TypeUserController extends Controller
      * @param  \App\TypeUser  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function edit(TypeUser $cargo)
+    public function edit(TypeUser $typeUser)
     {
-        return view('typeUsers.edit', compact('cargo'));
+        return view('typeUsers.edit', compact('typeUser'));
     }
 
     /**
@@ -77,11 +77,11 @@ class TypeUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TypeUser $cargo)
+    public function update(Request $request, TypeUser $typeUser)
     {
         $input = $request->all();
   
-        $cargo->fill($input)->save();
+        $typeUser->fill($input)->save();
   
         Session::flash('estado', 'El cargo fue editado exitosamente!');
 
@@ -94,9 +94,9 @@ class TypeUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TypeUser $cargo)
+    public function destroy(TypeUser $typeUser)
     {
-        $cargo->delete();
+        $typeUser->delete();
 
         Session::flash('estado', 'El cargo fue borrado exitosamente!');
 

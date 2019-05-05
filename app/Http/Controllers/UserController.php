@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Barbershop;
+use App\Headquarter;
+use App\User;
+use App\Service;
+use App\Turn;
+use Session;
 
 class UserController extends Controller
 {
@@ -23,7 +29,14 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $type_user_id = 3;
+        $barbershops = Barbershop::all()->pluck('businessName', 'id');
+        $headquarters = Headquarter::all()->pluck('businessName', 'id');
+        $barbers = User::where('type_user_id', $type_user_id)->pluck('name', 'id');
+        $services = Service::all()->pluck('name', 'id');
+        $user = \Auth::user();
+        $users = User::where('id', $user->id)->pluck('name', 'id');
+        return view('vistasCliente.pedirTurno', compact('barbershops', 'headquarters', 'barbers', 'services', 'users'));
     }
 
     /**
@@ -34,7 +47,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $turn = new Turn();
+        $barber = $request->input('barber_id');
+        $service = $request->input('service_id');
+        $customer = $request->input('customer_id');
+        $turn->fill($input);
+        $turn->barber_id = $barber;
+        $turn->service_id = $service;
+        $turn->customer_id = $customer;
+        $turn->state = true;
+
+        $turn->save();
+
+        Session::flash('estado','el turno ha sido añadido con éxito');
+        return redirect('/vistasCliente.home');
     }
 
     /**
@@ -59,6 +87,7 @@ class UserController extends Controller
     {
         //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -90,7 +119,7 @@ class UserController extends Controller
 
     public function pedirTurno()
     {
-        return view('vistasCliente.pedirTurno');
+
     }
 
     public function buscarBarberos()

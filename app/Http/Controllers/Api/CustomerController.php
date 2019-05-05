@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Customer;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,7 +11,8 @@ class CustomerController extends BaseAPIController
 {
     public function index()
     {
-        $customers = Customer::orderBy('name','asc')->get();
+        $type_user_id = 4;
+        $customers = User::where('type_user_id', $type_user_id)->orderBy('name','asc')->get();
 
         return $this -> sendResponse(
             $customers, 'Customers retrieved successfully.'
@@ -21,21 +23,21 @@ class CustomerController extends BaseAPIController
     {
         $input = $request->all();
 
-        $customer = Customer::create($input);
+        $customer = User::create($input);
 
         return $this->sendResponse(
             $customer, 'user created successfully'
         );
     }
 
-    public function show(Customer $customer)
+    public function show(User $customer)
     {
         return $this->sendResponse(
             $customer, 
             'customer retrieved successfully.');
     }
 
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, User $customer)
     {
         $input = $request->all();
 
@@ -47,7 +49,7 @@ class CustomerController extends BaseAPIController
             'Customer updated successfully.');
     }
 
-    public function destroy (Customer $customer)
+    public function destroy (User $customer)
     {
         $customer->delete();
 

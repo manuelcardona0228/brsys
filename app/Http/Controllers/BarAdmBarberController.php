@@ -8,10 +8,10 @@ use App\Barber;
 use App\Headquarter;
 use App\TypeUser;
 use App\User;
-use App\Turn;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
-class BarberController extends Controller
+class BarAdmBarberController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +21,10 @@ class BarberController extends Controller
     public function index()
     {
         $type_user_id = 3;
-        $barbers = User::where('type_user_id', $type_user_id)->orderBy('id')->paginate(10);
-        return view('barbers.index', compact('barbers'));
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $barbers = User::where('type_user_id', $type_user_id)->where('barbershop_id', $barbershop_id)->orderBy('id')->paginate(10);
+        return view('vistasAdminBarberia.barbers.index', compact('barbers'));
     }
 
     /**
@@ -32,8 +34,10 @@ class BarberController extends Controller
      */
     public function create()
     {
-        $headquarters = Headquarter::all()->pluck('businessName', 'id');
-        return view('barbers.create', compact('headquarters'));
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $headquarters = Headquarter::all()->where('barbershop_id', $barbershop_id)->pluck('businessName', 'id');
+        return view('vistasAdminBarberia.barbers.create', compact('headquarters'));
     }
 
     /**
@@ -56,12 +60,12 @@ class BarberController extends Controller
         $barber->save();
 
         Session::flash('estado','el barbero ha sido creado con éxito!');
-        return redirect('/barbers');
+        return redirect('/barberAdmins');
     }
 
-    public function show(User $barber)
+    public function show(User $barberAdmin)
     {
-        return view('barbers.show', compact('barber'));
+        return view('vistasAdminBarberia.barbers.show', compact('barberAdmin'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -69,10 +73,10 @@ class BarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $barber)
+    public function edit(User $barberAdmin)
     {
         $headquarters = Headquarter::all()->pluck('businessName', 'id');
-        return view('barbers.edit', compact('barber','headquarters'));
+        return view('vistasAdminBarberia.barbers.edit', compact('barberAdmin','headquarters'));
     }
 
     /**
@@ -89,7 +93,7 @@ class BarberController extends Controller
         $barber->fill($input)->save();
   
         Session::flash('estado', 'el barbero fue actualizado correctamente!');
-        return redirect('/barbers');
+        return redirect('/barberAdmins');
     }
 
     /**
@@ -104,33 +108,6 @@ class BarberController extends Controller
 
         Session::flash('estado', 'el barbero se ha eliminado correctamente');
 
-        return redirect('/barbers');
-    }
-
-    public function inicio()
-    {
-        return view('vistasBarbero.home');
-    }
-
-    public function turnosPendientes()
-    {
-        $user = \Auth::User();
-        $barber = $user->id;
-        $turns = Turn::where('barber_id', $barber)->orderBy('id')->paginate(10); 
-        return view('vistasBarbero.turnosPendientes', compact('turns'));
-    }
-
-    public function historialTurnos()
-    {
-        $user = \Auth::User();
-        $barber = $user->id;
-        $state = 0;
-        $turns = Turn::where('barber_id', $barber)->where('state', $state)->orderBy('id')->paginate(10); 
-        return view('vistasBarbero.historialTurno', compact('turns'));
-    }
-
-    public function agendaTurnos()
-    {
-        return view('vistasBarbero.agenda');
+        return redirect('/barberAdmins');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Barber;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +12,8 @@ class BarberController extends BaseAPIController
     
     public function index()
     {
-        $barbers = Barber::orderBy('id','asc')->get();
+        $type_user_id = 3;
+        $barbers = User::where('type_user_id', $type_user_id)->orderBy('id','asc')->get();
 
         return $this->sendResponse(
             $barbers, 
@@ -23,7 +25,7 @@ class BarberController extends BaseAPIController
     {
         $input = $request->all();
 
-        $barber = Barber::create($input);
+        $barber = User::create($input);
 
         return $this->sendResponse(
             $barber,
@@ -31,7 +33,7 @@ class BarberController extends BaseAPIController
         
     }
 
-    public function show(Barber $barber)
+    public function show(User $barber)
     {
         return $this->sendResponse(
             $barber,
@@ -39,7 +41,7 @@ class BarberController extends BaseAPIController
         );
     }
 
-    public function update(request $request, Barber $barber)
+    public function update(request $request, User $barber)
     {
         $input = $request->all();
 
@@ -51,7 +53,7 @@ class BarberController extends BaseAPIController
         );
     }
 
-    public function destroy(Barber $barber)
+    public function destroy(User $barber)
     {
         $barber->delete();
 

@@ -10,7 +10,7 @@ use App\Customer;
 use App\User;
 use Session;
 
-class TurnController extends Controller
+class TurnBarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class TurnController extends Controller
     public function index()
     {
         $turns = Turn::orderBy('id')->paginate(10);
-        return view('turns.index', compact('turns'));
+        return view('vistasBarbero.turns.index', compact('turns'));
     }
 
     /**
@@ -33,7 +33,7 @@ class TurnController extends Controller
         $barber = User::where('type_user_id', 3)->pluck('name','id');
         $service = Service::all()->pluck('name', 'id');
         $customer = User::where('type_user_id', 4)->pluck('name', 'id');
-        return view('turns.create', compact('barber', 'service', 'customer'));
+        return view('vistasBarbero.turns.create', compact('barber', 'service', 'customer'));
     }
 
     /**
@@ -59,7 +59,7 @@ class TurnController extends Controller
         $turn->save();
 
         Session::flash('estado','el turno ha sido añadido con éxito');
-        return redirect('/turns');
+        return redirect('/turnBarbers');
 
     }
 
@@ -69,9 +69,9 @@ class TurnController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Turn $turn)
+    public function show(Turn $turnBarber)
     {
-        return view('turns.show',compact('turn'));
+        return view('vistasBarbero.turns.show',compact('turnBarber'));
     }
     
     /**
@@ -80,12 +80,12 @@ class TurnController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Turn $turn)
+    public function edit(Turn $turnBarber)
     {
         $barber = User::where('type_user_id', 3)->pluck('name', 'id');
         $service = Service::all()->pluck('name', 'id');
         $customer = User::where('type_user_id', 4)->pluck('name', 'id');
-        return view('turns.edit', compact('turn', 'barber', 'service', 'customer'));
+        return view('vistasBarbero.turns.edit', compact('turnBarber', 'barber', 'service', 'customer'));
     }
 
     /**
@@ -100,7 +100,7 @@ class TurnController extends Controller
         $input = $request->all();
         $turn->fill($input)->save();
         Session::flash('estado','el turno se ha editado correctamente');
-        return redirect('/turns');
+        return redirect('/turnBarbers');
     }
 
     /**
@@ -113,6 +113,6 @@ class TurnController extends Controller
     {
         $turn->delete();
         Session::flash('estado','el turno se ha eliminado correctamente');
-        redirec('/turns');
+        redirec('/turnBarbers');
     }
 }
