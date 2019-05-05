@@ -19,9 +19,59 @@ class BarbershopSeeder extends Seeder
             $barber->email = 'barbaroa0229@hotmail.com';
             $barber->phone = '321980670';
             $barber->website = 'N/A';
-            $barber->department_id = 2;
+            //$barber->department_id = 2;
+            //$barber->city_id =;
+            $barber->barbershop_administrator_id = 2;
+            $barber->save();
+
+
+            $barber = new Barbershop();
+            $barber->nit  = '1010215716';
+            $barber->businessName = 'Versace';
+            $barber->address = 'Carrera 23 # 49-23';
+            $barber->email = 'clubVersace@gmail.com';
+            $barber->phone = '3124560986';
+            $barber->website = 'N/A';
+            //$barber->department_id = 2;
             //$barber->city_id =;
             $barber->barbershop_administrator_id = 1;
+            $barber->save();
+
+
+            $barber = new Barbershop();
+            $barber->nit  = '1059814262';
+            $barber->businessName = 'Barberia Del Centro';
+            $barber->address = 'Calle 19 # 23-34';
+            $barber->email = 'barberiaDelCentro@gmail.com';
+            $barber->phone = '3230982345';
+            $barber->website = 'N/A';
+            //$barber->department_id = 2;
+            //$barber->city_id =;
+            $barber->barbershop_administrator_id = 3;
+            $barber->save();
+
+            $barber = new Barbershop();
+            $barber->nit  = '1010215716';
+            $barber->businessName = 'Leñador Barbershop';
+            $barber->address = 'Calle 64 #27c 37';
+            $barber->email = 'leñadorBarbershop@gmail.com';
+            $barber->phone = '3158690845';
+            $barber->website = 'N/A';
+            //$barber->department_id = 2;
+            //$barber->city_id =;
+            $barber->barbershop_administrator_id = 5;
+            $barber->save();
+
+            $barber = new Barbershop();
+            $barber->nit  = '1010215716';
+            $barber->businessName = 'Vintage Barberia';
+            $barber->address = 'Calle 63 # 24-13';
+            $barber->email = 'clubVintage@gmail.com';
+            $barber->phone = '3146092827';
+            $barber->website = 'N/A';
+            //$barber->department_id = 2;
+            //$barber->city_id =;
+            $barber->barbershop_administrator_id = 4;
             $barber->save();
     }
 }

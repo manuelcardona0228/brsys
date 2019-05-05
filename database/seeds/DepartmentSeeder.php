@@ -11,18 +11,9 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        $department = new Department();
-        $department->name = 'Amazonas';
-        $department->state = true;
-        $department->save();
 
         $department = new Department();
         $department->name = 'Antioquia';
-        $department->state = true;
-        $department->save();
-
-        $department = new Department();
-        $department->name = 'Arauca';
         $department->state = true;
         $department->save();
 
@@ -146,6 +137,11 @@ class DepartmentSeeder extends Seeder
         $department->save();
 
         $department = new Department();
+        $department->name = 'Arauca';
+        $department->state = true;
+        $department->save();
+
+        $department = new Department();
         $department->name = 'Casanare';
         $department->state = true;
         $department->save();
@@ -157,6 +153,11 @@ class DepartmentSeeder extends Seeder
 
         $department = new Department();
         $department->name = 'Archipielago De San Andrés, Providencia Y Santa Catalina';
+        $department->state = true;
+        $department->save();
+
+        $department = new Department();
+        $department->name = 'Amazonas';
         $department->state = true;
         $department->save();
 
