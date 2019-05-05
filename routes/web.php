@@ -38,7 +38,11 @@ Route::group(['middleware' => 'systemAdmin'], function(){
 });
 
 Route::group(['middleware' => 'barbershopAdmin'], function(){
-    Route::get('/inicioAdmin', 'BarbershopAdministratorController@inicio');
+    Route::resource('barberAdmins', 'BarAdmBarberController');
+    Route::resource('barbershopAdmins', 'BarAdmBarbershopController');
+    Route::resource('headquarterAdmins', 'BarAdmHeadquarterController');
+    Route::resource('serviceAdmins', 'BarAdmServiceController');
+    Route::resource('customerAdmins', 'BarAdmCustomerController');
 });
 
 Route::group(['middleware' => 'barber'], function(){
@@ -47,12 +51,15 @@ Route::group(['middleware' => 'barber'], function(){
     Route::get('/listaTurnos', 'BarberController@verTurnos');
     Route::get('/histTurnosB', 'BarberController@turnosRealizados');
     Route::get('/agendaBarbero', 'BarberController@agendaTurnos');
+    Route::resource('turnBarbers', 'TurnBarController');
+    Route::get('/turnosPendientes', 'BarberController@turnosPendientes');
 });
 
 Route::group(['middleware' => 'customer'], function(){
 
     Route::get('/inicioUser', 'UserController@inicio');
-    Route::get('/pedirTurno', 'UserController@pedirTurno');
+    Route::get('/pedirTurno', 'UserController@create');
+    Route::resource('/users', 'UserController');
     Route::get('/buscarBarbero', 'UserController@buscarBarberos');
     Route::get('/perfilBarbero', 'UserController@verPerfil');
     Route::get('/buscarServicios', 'UserController@buscarServicios');

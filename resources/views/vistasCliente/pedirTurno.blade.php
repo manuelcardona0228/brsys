@@ -7,11 +7,11 @@
         <div class="card mt-3 shadow p-3 mb-5 bg-white rounded">
             <div class="card-body">
                 <h5 class="card-title">Pedir Turno</h5>
-
-                <div class="form-group">
-                    <label for="barber">Seleccione Barberia</label>
-                    <input type="select" placeholder="Seleccione Barberia..." class="form-control" name="barber">
-                </div>
+                {!! Form::open(['route' => 'users.store']) !!}
+                    <div class="form-group">
+                        {!! Form::label('barbershop_id', 'Seleccione Barberia', ['class' => 'control-label']) !!}
+                        {!! Form::select('barbershop_id', $barbershops, $barbershops,['class' => 'form-control']) !!}
+                    </div>
 
                 <div class="form-group">
                     <label for="sede">Seleccione Sede</label>
@@ -46,6 +46,11 @@
                 });
                 });
                 </script>
+
+                {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('turns.index') }}" class="btn btn-secondary">Volver</a>
+
+                {!! Form::close() !!}
 
             </div>
         </div>

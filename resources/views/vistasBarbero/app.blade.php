@@ -1,4 +1,4 @@
-@include('Llamados.links')
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -103,6 +103,7 @@
                         <div class="card-body">
                             <ul class="botones">
                                 <a href="/histTurnosB"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
+                                <a href="/turnosPendientes"><li><i class="fas fa-calendar"></i> Turnos Pendientes</li></a>
                             </ul>
                         </div>
                     </div>
@@ -119,13 +120,22 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="botones">
-                                <a href="/"><li>Modificar Perfil</li></a>
+                                <a href="/agendaBarbero"><li>Modificar Perfil</li></a>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
+            <main class="py-4">
+                    @if(Session::has('estado'))
+                        <article class="alert alert-success">
+                        {{ Session::get('estado') }}
+                        </article>
+                    @endif
+            </main>
+
             <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -133,6 +143,7 @@
                     </div>
                 @endif
             </div>
+        </div>
                 @yield('content')
             </div>
         </div>

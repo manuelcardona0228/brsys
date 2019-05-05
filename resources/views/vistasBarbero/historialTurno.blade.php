@@ -4,7 +4,7 @@
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
         <h1 class="lines-effect">Historial De Turnos</h1>
         <hr>
-        <a href="{!! url('barberias/create') !!}" class="btn btn-success btn-block">Crear Cliente</a></p>
+        <a href="{!! url(turnBarbers/create') !!}" class="btn btn-success btn-block">Crear Turno</a></p>
         <hr>
         <table class="table">
             <thead class="thead-dark">
@@ -34,7 +34,7 @@
                 <td>5</td>
                 <td><a href="/verUsers" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="/editarUsers" class="btn btn-outline-dark btn-sm">Editar</a></td>
-                <td><a href="{{ route('users.index') }}" class="btn btn-outline-danger btn-sm">Borrar</a></td>
+                <td><a href="#" class="btn btn-outline-danger btn-sm">Borrar</a></td>
                 </tr>
             </tbody>
         </table>

@@ -93,7 +93,7 @@
                         <div class="card-body">
                             <ul class="botones">
                                 <a href="/pedirTurno"><li><i class="fas fa-calendar-check"></i> Pedir Turno</li></a>
-                                <a href="/historialTurnos"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
+                                <a href="#"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
                             </ul>
                         </div>
                     </div>
