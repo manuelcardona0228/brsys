@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Event;
+use App\Turn;
+
 
 class EventController extends Controller
 {
@@ -13,7 +16,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $type_user_id = 3;
+        $user = \Auth::User();
+        $events = Event::where('barber_id', $user->id)->orderBy('id')->paginate(10);
+        return view('vistasBarbero.agenda', compact('events'));
     }
 
     /**

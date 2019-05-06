@@ -78,8 +78,8 @@ class BarbershopAdministratorController extends Controller
     public function edit(User $barbershopAdministrator)
     {
         $cargo = TypeUser::all()->pluck('name', 'id');
-
-        return view('barbershopAdministrators.edit', compact('barbershopAdministrator','cargo'));
+        $barbershops = Barbershop::all()->pluck('businessName', 'id');
+        return view('barbershopAdministrators.edit', compact('barbershopAdministrator','cargo', 'barbershops'));
     }
 
     /**
