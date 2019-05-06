@@ -12,7 +12,6 @@
                 <th scope="col">iD</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Departamento</th>
-                <th scope="col">Estado</th>
                 <th scope="col">Fecha Actualizacion</th>
                 <th scope="col">Ver</th>
                 <th scope="col">Editar</th>
@@ -24,7 +23,7 @@
                 <tr>
                 <th scope="row">{{ $city->id }}</th>
                 <td>{{ $city->name }}</td>
-                <td>{{ $city->department_id }}</td>
+                <td>{{ $city->department->name }}</td>
                 <td>{{ $city->updated_at }}</td>
                 <td><a href="{{ route('cities.show', $city->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('cities.edit', $city->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>

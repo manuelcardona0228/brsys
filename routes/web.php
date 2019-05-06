@@ -49,8 +49,8 @@ Route::group(['middleware' => 'barber'], function(){
 
     Route::get('/inicioBarbero', 'BarberController@inicio');
     Route::get('/listaTurnos', 'BarberController@verTurnos');
-    Route::get('/histTurnosB', 'BarberController@turnosRealizados');
-    Route::get('/agendaBarbero', 'BarberController@agendaTurnos');
+    Route::get('/historialTurnos', 'BarberController@historialTurnos');
+    Route::get('/agendaBarbero', 'EventController@index');
     Route::resource('turnBarbers', 'TurnBarController');
     Route::get('/turnosPendientes', 'BarberController@turnosPendientes');
 });

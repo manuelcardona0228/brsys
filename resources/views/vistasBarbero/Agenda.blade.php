@@ -26,6 +26,24 @@
                     $("#modalEventos").modal();
                 },
 
+                events:[
+                    <?php
+                        foreach($events as $event){
+                    ?>  
+                        {
+                            id:"<?php echo $event->id; ?>",
+                            title: "<?php echo $event->title; ?>",
+                            barber: "<?php echo $event->barber->name; ?>",
+                            start: "<?php echo $event->turn->day; ?>",
+                            turn: "<?php echo $event->turn->id; ?>",
+                            color: "<?php echo $event->color; ?>",
+                            textColor: "<?php echo $event->textColor; ?>"
+                        },
+                    <?php
+                    }
+                    ?>
+                ],
+
                 eventClick: function(calEvent,jsEvent,view){
                     $('#tituloEvento').html(calEvent.title);
                     //

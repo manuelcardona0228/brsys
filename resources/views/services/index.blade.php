@@ -28,7 +28,7 @@
                 <td>{{ $service->description }}</td>
                 <td>{{ $service->name }}</td>
                 <td>{{ $service->value }}</td>
-                <td>{{ $service->barbershop_id }}</td>
+                <td>{{ $service->barbershop->businessName }}</td>
                 <td>{{ $service->updated_at }}</td>
                 <td><a href="{{ route('services.show', $service->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('services.edit', $service->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>

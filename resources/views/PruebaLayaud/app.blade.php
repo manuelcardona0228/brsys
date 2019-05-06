@@ -261,7 +261,7 @@
                 <div class="card-body">
                     <ul class="botones">
                         <a href="{{ route('cities.create') }}"><li>Agregar Ciudad</li></a>
-                        <a href="{{ route('cities.index') }}"><li>Ver Departamento</li></a>
+                        <a href="{{ route('cities.index') }}"><li>Ver Ciudades</li></a>
                     </ul>
                 </div>
                 </div>

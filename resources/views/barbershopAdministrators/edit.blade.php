@@ -39,6 +39,11 @@
                 </div>
 
                 <div class="form-group">
+                    {!! Form::label('barbershop_id', 'Barberia', ['class' => 'control-label']) !!}
+                    {!! Form::select('barbershop_id', $barbershops, null,['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
                     {!! Form::label('email', 'E-mail', ['class' => 'control-label']) !!}
                     {!! Form::text('email', null, ['class' => 'form-control']) !!}
                 </div>
@@ -46,11 +51,6 @@
                 <div class="form-group">
                     {!! Form::label('nameUser', 'Nombre De Usuario', ['class' => 'control-label']) !!}
                     {!! Form::text('nameUser', null, ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('password', 'Contraseña', ['class' => 'control-label']) !!}
-                    {!! Form::text('password', null, ['class' => 'form-control']) !!}
                 </div>
                     
                 {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}

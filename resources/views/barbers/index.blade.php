@@ -30,7 +30,7 @@
                 <td>{{ $barber->qualification }}</td>
                 <td>{{ $barber->phone }}</td>
                 <td>{{ $barber->email }}</td>
-                <td>{{ $barber->headquarter_id }}</td>
+                <td>{{ $barber->headquarter->businessName }}</td>
                 <td><a href="{{ route('barbers.show', $barber->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('barbers.edit', $barber->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>
                 <td>{!! Form::open([

@@ -102,7 +102,7 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="botones">
-                                <a href="/histTurnosB"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
+                                <a href="/historialTurnos"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
                                 <a href="/turnosPendientes"><li><i class="fas fa-calendar"></i> Turnos Pendientes</li></a>
                             </ul>
                         </div>

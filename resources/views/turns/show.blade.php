@@ -9,15 +9,23 @@
             <div class="card-body">
               <table class="table table-striped table-hover">
               <tr>
-                <td>Servicio</td>
-                <td>{{ $turn->service_id }}</td>
+                <td>Descripción Del Servicio</td>
+                <td>{{ $turn->service->description }}</td>
+              </tr>
+              <tr>
+                <td>Tipo De Servicio</td>
+                <td>{{ $turn->service->name }}</td>
+              </tr>
+              <tr>
+                <td>Valor Del Servicio</td>
+                <td>{{ $turn->service->value }}</td>
               </tr>
               <tr>
                 <td>Barbero</td>
-                  <td>{{ $turn->barber_id }}</td>
+                  <td>{{ $turn->barber->name }}</td>
                 </tr>
                 <td>Cliente</td>
-                  <td>{{ $turn->customer_id }}</td>
+                  <td>{{ $turn->customer->name }}</td>
                 </tr>
                 <td>Fecha</td>
                   <td>{{ $turn->day }}</td>

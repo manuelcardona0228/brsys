@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
-        <h1 class="lines-effect">Historial De Turnos</h1>
+        <h1 class="lines-effect">Turnos Pendientes</h1>
         <hr>
         <a href="{!! url('turnBarbers/create') !!}" class="btn btn-success btn-block">Crear Cliente</a></p>
         <hr>

@@ -15,6 +15,7 @@
                     <th scope="col">Nombres</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">E-mail</th>
+                    <th scope="col">Barberia Propia</th>
                     <th scope="col">Fecha Actualizacion</th>
                     <th scope="col">Ver</th>
                     <th scope="col">Editar</th>
@@ -28,6 +29,7 @@
                     <td>{{ $barbershopAdministrator->name }}</td>
                     <td>{{ $barbershopAdministrator->phone }}</td>
                     <td>{{ $barbershopAdministrator->email }}</td>
+                    <td>{{ $barbershopAdministrator->barbershop->businessName }}</td>
                     <td>{{ $barbershopAdministrator->updated_at }}</td>
                     <td><a href="{{ route('barbershopAdministrators.show', $barbershopAdministrator->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                     <td><a href="{{ route('barbershopAdministrators.edit', $barbershopAdministrator->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>

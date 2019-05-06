@@ -14,11 +14,7 @@
                 </tr>
                 <tr>
                   <td style="width: 200px;">Departamento</td>
-                  <td>{{ $city->department_id }}</td>
-                </tr>
-                <tr>
-                  <td>Estado</td>
-                  <td>{{ $city->state }}</td>
+                  <td>{{ $city->department->name }}</td>
                 </tr>
                 <tr>
                   <td>Creado en</td>

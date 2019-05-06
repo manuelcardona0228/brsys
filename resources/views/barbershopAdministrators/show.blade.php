@@ -28,6 +28,10 @@
                   <td>{{ $barbershopAdministrator->address }}</td>
                 </tr>
                 <tr>
+                  <td>Barberia Propia</td>
+                  <td>{{ $barbershopAdministrator->barbershop->businessName }}</td>
+                </tr>
+                <tr>
                   <td>Creado en</td>
                   <td>{{ $barbershopAdministrator->created_at }}</td>
                 </tr>

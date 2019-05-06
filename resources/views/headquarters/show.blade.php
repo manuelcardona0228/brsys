@@ -23,7 +23,7 @@
                   <td>{{ $headquarters->phone }}</td>
                 </tr>
                 <td>Barberia</td>
-                  <td>{{ $headquarters->barbershop_id }}</td>
+                  <td>{{ $headquarters->barbershop->businessName }}</td>
                 </tr>
                 <td>Departamento</td>
                   <td>{{ $headquarters->department_id }}</td>

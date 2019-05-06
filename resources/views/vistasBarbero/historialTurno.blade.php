@@ -4,7 +4,7 @@
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
         <h1 class="lines-effect">Historial De Turnos</h1>
         <hr>
-        <a href="{!! url(turnBarbers/create') !!}" class="btn btn-success btn-block">Crear Turno</a></p>
+        <a href="{!! url('turnBarbers/create') !!}" class="btn btn-success btn-block">Crear Turno</a></p>
         <hr>
         <table class="table">
             <thead class="thead-dark">
@@ -16,27 +16,22 @@
                 <th scope="col">Servicio</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Estado</th>
-                <th scope="col">Calificación</th>
-                <th scope="col">Ver</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Borrar</th>
                 </tr>
             </thead>
+                @foreach($turns as $turn)
                 <tbody>
                 <tr>
-                <th scope="row">1</th>
-                <td>25/03/2019</td>
-                <td>5:30</td>
-                <td>Pedro</td>
-                <td>Corte + Barba</td>
-                <td>Santiago</td>
-                <td>Realizado</td>
-                <td>5</td>
-                <td><a href="/verUsers" class="btn btn-outline-primary btn-sm">Ver</a></td>
-                <td><a href="/editarUsers" class="btn btn-outline-dark btn-sm">Editar</a></td>
-                <td><a href="#" class="btn btn-outline-danger btn-sm">Borrar</a></td>
+                <th scope="row">{{ $turn->id }}</th>
+                <td>{{ $turn->day }}</td>
+                <td>{{ $turn->hour }}</td>
+                <td>{{ $turn->barber_id }}</td>
+                <td>{{ $turn->service_id }}</td>
+                <td>{{ $turn->customer_id }}</td>
+                <td>{{ $turn->state }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
+        {{ $turns->links() }}
     </div>
 @endsection

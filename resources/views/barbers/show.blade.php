@@ -41,11 +41,11 @@
               </tr>
               <tr>
                 <td>Sede</td>
-                <td>{{ $barber->headquarter_id}}</td>
+                <td>{{ $barber->headquarter->businessName}}</td>
               </tr>
               <tr>
                 <td>Cargo</td>
-                <td>{{ $barber->type_user_id }}</td>
+                <td>{{ $barber->typeUser->name }}</td>
               </tr>
               <tr>
                 <td>Creado en</td>

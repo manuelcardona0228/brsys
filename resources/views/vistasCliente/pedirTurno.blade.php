@@ -47,6 +47,18 @@
                 });
                 </script>
 
+                <div class="form-group">
+                    <label for="service">Seleccione Dia</label>
+                    <input class="calendario" date-date-format="d-m-y" />
+                </div>
+
+                <script>
+                    $('.calendario').flatpickr({
+                        minDate:"today",
+                        maxDate:new Date().fp_incr(3)
+                    });
+                </script>
+
                 {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
                 <a href="{{ route('turns.index') }}" class="btn btn-secondary">Volver</a>
 

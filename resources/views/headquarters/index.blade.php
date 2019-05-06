@@ -15,6 +15,7 @@
                 <th scope="col">Telefono</th>
                 <th scope="col">Email</th>
                 <th scope="col">Dirección</th>
+                <th scope="col">Barberia</th>
                 <th scope="col">Fecha Actualizacion</th>
                 <th scope="col">Ver</th>
                 <th scope="col">Editar</th>
@@ -30,6 +31,7 @@
                 <td>{{ $headquarter->phone }}</td>
                 <td>{{ $headquarter->email }}</td>
                 <td>{{ $headquarter->address }}</td>
+                <td>{{ $headquarter->barbershop->businessName }}</td>
                 <td>{{ $headquarter->updated_at }}</td>
                 <td><a href="{{ route('headquarters.show', $headquarter->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('headquarters.edit', $headquarter->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>

@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                   <td style="width: 200px;">Barberia</td>
-                  <td>{{ $service->barbershop_id }}</td>
+                  <td>{{ $service->barbershop->businessName }}</td>
                 </tr>
               <tr>
                 <td>Creado en</td>
