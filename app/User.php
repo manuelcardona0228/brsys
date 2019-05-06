@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function typeUser()
     {
-        return $this->hasOne('App\TypeUser');
+        return $this->belongsTo('App\TypeUser');
     }
 
     public function turns()
@@ -50,11 +50,16 @@ class User extends Authenticatable
 
     public function headquarter()
     {
-        return $this->hasOne('App\Headquarter');
+        return $this->belongsTo('App\Headquarter');
     }
 
     public function barbershop()
     {
-        return $this->hasOne('App\Barbershop');
+        return $this->belongsTo('App\Barbershop');
+    }
+
+    public function event()
+    {
+        return $this->hasOne('App\Event');
     }
 }

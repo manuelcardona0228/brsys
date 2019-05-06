@@ -10,23 +10,28 @@ class Turn extends Model
         'day', 'hour', 'barber_id', 'service_id', 'customer_id', 'state'
     ];
 
-    public function servicio()
+    public function service()
     {
-        return $this->hasOne('App\Servicio');
+        return $this->belongsTo('App\Service');
     }
 
     public function customer()
     {
-        return $this->hasOne('App\Customer');
+        return $this->belongsTo('App\User');
     }
 
     public function barber()
     {
-        return $this->hasOne('App\Barber');
+        return $this->belongsTo('App\User');
     }
 
     public function user()
     {
         return $this->hasOne('App\User');
+    }
+
+    public function events()
+    {
+        return $this->hasOne('App\Event');
     }
 }

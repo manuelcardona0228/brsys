@@ -12,7 +12,7 @@ class Service extends Model
 
     public function barbershop()
     {
-        return $this->hasOne('App\Barbershop');
+        return $this->belongsTo('App\Barbershop');
     }
 
     public function turn()

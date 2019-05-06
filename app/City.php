@@ -12,7 +12,7 @@ class City extends Model
 
     public function department()
     {
-        return $this->hasOne('App\Department');
+        return $this->belongsTo('App\Department');
     }
 
     public function customers()
