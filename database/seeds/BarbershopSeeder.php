@@ -21,7 +21,6 @@ class BarbershopSeeder extends Seeder
             $barber->website = 'N/A';
             //$barber->department_id = 2;
             //$barber->city_id =;
-            $barber->barbershop_administrator_id = 2;
             $barber->save();
 
 
@@ -34,7 +33,6 @@ class BarbershopSeeder extends Seeder
             $barber->website = 'N/A';
             //$barber->department_id = 2;
             //$barber->city_id =;
-            $barber->barbershop_administrator_id = 1;
             $barber->save();
 
 
@@ -47,7 +45,6 @@ class BarbershopSeeder extends Seeder
             $barber->website = 'N/A';
             //$barber->department_id = 2;
             //$barber->city_id =;
-            $barber->barbershop_administrator_id = 3;
             $barber->save();
 
             $barber = new Barbershop();
@@ -59,7 +56,6 @@ class BarbershopSeeder extends Seeder
             $barber->website = 'N/A';
             //$barber->department_id = 2;
             //$barber->city_id =;
-            $barber->barbershop_administrator_id = 5;
             $barber->save();
 
             $barber = new Barbershop();
@@ -71,7 +67,6 @@ class BarbershopSeeder extends Seeder
             $barber->website = 'N/A';
             //$barber->department_id = 2;
             //$barber->city_id =;
-            $barber->barbershop_administrator_id = 4;
             $barber->save();
     }
 }

@@ -21,6 +21,7 @@ class BarbershopAdminSeeder extends Seeder
         $admin->email = 'wilmafre@gmail.com';
         $admin->nameUser = 'fredy970';
         $admin->password = Hash::make('hola1234');
+        $admin->barbershop_id = 2;
         $admin->type_user_id = 2;
         $admin->longitude = 7.23;
         $admin->latitude = 8.34;
@@ -34,6 +35,7 @@ class BarbershopAdminSeeder extends Seeder
         $admin->email = 'juancarlosmemo@hotmail.com';
         $admin->nameUser = 'juancarlos0623';
         $admin->password = Hash::make('juan1234');
+        $admin->barbershop_id = 1;
         $admin->type_user_id = 2;
         $admin->longitude = 6.45;
         $admin->latitude = 7.23;
@@ -47,6 +49,7 @@ class BarbershopAdminSeeder extends Seeder
         $admin->email = 'joseolfo45@hotmail.com';
         $admin->nameUser = 'adolfojose';
         $admin->password = Hash::make('hola123');
+        $admin->barbershop_id = 3;
         $admin->type_user_id = 2;
         $admin->longitude = 6.45;
         $admin->latitude = 7.23;
@@ -60,6 +63,7 @@ class BarbershopAdminSeeder extends Seeder
         $admin->email = 'crintinaar@gmail.com';
         $admin->nameUser = 'critinas1113';
         $admin->password = Hash::make('hola123');
+        $admin->barbershop_id = 5;
         $admin->type_user_id = 2;
         $admin->longitude = 6.45;
         $admin->latitude = 7.23;
@@ -73,6 +77,7 @@ class BarbershopAdminSeeder extends Seeder
         $admin->email = 'felipeCortes@gmail.com';
         $admin->nameUser = 'felipMo12';
         $admin->password = Hash::make('hola123');
+        $admin->barbershop_id = 4;
         $admin->type_user_id = 2;
         $admin->longitude = 6.45;
         $admin->latitude = 7.23;
