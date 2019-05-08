@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
+    protected $table = 'cities';
+
     protected $fillable = [
         'name', 'state', 'department_id'
     ];
@@ -15,9 +17,9 @@ class City extends Model
         return $this->belongsTo('App\Department');
     }
 
-    public function customers()
+    public function customer()
     {
-        return $this->hasMany('App\Customer');
+        return $this->hasOne('App\User');
     }
 
     public function users()
@@ -33,5 +35,10 @@ class City extends Model
     public function barbershops()
     {
         return $this->hasOne('App\Barbershop');
+    }
+
+    public static function cities($id)
+    {
+        return City::where('department_id', $id)->get();
     }
 }

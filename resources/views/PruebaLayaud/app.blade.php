@@ -285,6 +285,9 @@
             </div>
         </div>
                 @yield('content')
+                
+                {!! Html::script('js/jquery-2.1.0.min.js') !!}
+                {!! Html::script('js/prueba.js') !!}
             </div>
         </div>
         </div>

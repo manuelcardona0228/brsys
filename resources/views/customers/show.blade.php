@@ -29,6 +29,14 @@
                     <td>Dirección</td>
                     <td>{{ $customer->address }}</td>
                 </tr>
+                <tr>
+                    <td>Departamento</td>
+                    <td>{{ $customer->department->name }}</td>
+                </tr>
+                <tr>
+                    <td>Ciudad</td>
+                    <td>{{ $customer->city->name }}</td>
+                </tr>
                     <td>Creado en</td>
                     <td>{{ $customer->created_at }}</td>
                 </tr>

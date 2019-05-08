@@ -45,7 +45,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $barbers->links() }}
+        
     </div>
 </div>
 @endsection

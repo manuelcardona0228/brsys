@@ -22,8 +22,12 @@ class BarAdmBarberController extends Controller
     {
         $type_user_id = 3;
         $user = \Auth::User();
-        $barbershop_id = $user->barbershop_id;
-        $barbers = User::where('type_user_id', $type_user_id)->where('barbershop_id', $barbershop_id)->orderBy('id')->paginate(10);
+        $barbershop = $user->barbershop_id;
+        //$barbers = User::where('type_user_id', $type_user_id)->where('headquarter_id.barbershop_id', $barbershop)->orderBy('id')->paginate(10);
+        $barbers = User::where('type_user_id', $type_user_id)
+            ->join('headquarters', 'barbershops.id', '=', 'users.barbershop.id')
+//            ->where('users.headquarter_id', '=', 'headquarters.id')
+            ->get();
         return view('vistasAdminBarberia.barbers.index', compact('barbers'));
     }
 

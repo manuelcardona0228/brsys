@@ -34,6 +34,7 @@ Route::group(['middleware' => 'systemAdmin'], function(){
     Route::resource('profiles', 'ProfileController');
     Route::resource('departments', 'DepartmentController');
     Route::resource('cities', 'CityController');
+    Route::get('/city/{id}', 'CustomerController@getCities');
 
 });
 

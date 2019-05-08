@@ -38,9 +38,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Turn');
     }
 
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
+
     public function city()
     {
-        return $this->hasOne('App\City');
+        return $this->belongsTo('App\City');
     }
 
     public function profile()
@@ -62,4 +67,6 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Event');
     }
+
+
 }

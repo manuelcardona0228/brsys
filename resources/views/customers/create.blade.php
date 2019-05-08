@@ -58,12 +58,12 @@
 
                 <div class="form-group">
                     {!! Form::label('department_id', 'Departamento', ['class' => 'control-label']) !!}
-                    {!! Form::select('department_id', $department, $department,['class' => 'form-control']) !!}
+                    {!! Form::select('department_id', $department, null,['id' => 'department_id' ,'class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('city_id', 'Ciudad', ['class' => 'control-label']) !!}
-                    {!! Form::select('city_id', $city, $city,['class' => 'form-control']) !!}
+                    {!! Form::select('city_id', ['placerholde' => 'Seleccione'], null, ['id' => 'city_id' ,'class' => 'form-control']) !!}
                 </div>
 
                 {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}

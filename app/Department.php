@@ -14,4 +14,9 @@ class Department extends Model
     {
         return $this->hasMany('App\City');
     }
+
+    public function customer()
+    {
+        return $this->hasOne('App\User');
+    }
 }

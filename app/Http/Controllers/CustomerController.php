@@ -25,6 +25,7 @@ class CustomerController extends Controller
         return view('customers.index', compact('customers'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,8 +34,18 @@ class CustomerController extends Controller
     public function create()
     {
         $department = Department::all()->pluck('name', 'id');
-        $city = City::all()->pluck('name', 'id');
-        return view('customers.create', compact('department', 'city'));
+        //$city = City::all()->pluck('name', 'id');
+        return view('customers.create', compact('department'));
+    }
+    
+
+    public function getCities(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $cities = City::cities($id);
+            return response()->json($cities);
+        }
     }
 
     /**
@@ -50,9 +61,11 @@ class CustomerController extends Controller
         $password = $request->input('password');
         $password = Hash::make($password);
         $department = $request->input('department_id');
+        $city = $request->input('city_id');
         $customer->fill($input);
         $customer->password = $password;
         $customer->department_id = $department;
+        $customer->city_id = $city;
         $customer->type_user_id = 4;
         $customer->save();
 

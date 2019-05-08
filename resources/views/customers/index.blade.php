@@ -14,6 +14,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Telefono</th>
                 <th scope="col">Fecha De Nacimiento</th>
+                <th scope="col">Departamento</th>
                 <th scope="col">Ciudad</th>
                 <th scope="col">Ver</th>
                 <th scope="col">Editar</th>
@@ -28,6 +29,7 @@
                 <td>{{ $customer->email }}</td>
                 <td>{{ $customer->phone }}</td>
                 <td>{{ $customer->birthdate }}</td>
+                <td>{{ $customer->department_id }}</td>
                 <td>{{ $customer->city_id }}</td>
                 <td><a href="{{ route('customers.show', $customer->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>
