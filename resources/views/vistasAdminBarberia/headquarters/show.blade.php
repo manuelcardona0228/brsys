@@ -23,13 +23,13 @@
                   <td>{{ $headquarterAdmin->phone }}</td>
                 </tr>
                 <td>Barberia</td>
-                  <td>{{ $headquarterAdmin->barbershop_id }}</td>
+                  <td>{{ $headquarterAdmin->barbershop->businessName }}</td>
                 </tr>
                 <td>Departamento</td>
-                  <td>{{ $headquarterAdmin->department_id }}</td>
+                  <td>{{ $headquarterAdmin->department->name }}</td>
                 </tr>
                 <td>City</td>
-                  <td>{{ $headquarterAdmin->city_id }}</td>
+                  <td>{{ $headquarterAdmin->city->name }}</td>
                 </tr>
                 <tr>
                   <td>Creado en</td>

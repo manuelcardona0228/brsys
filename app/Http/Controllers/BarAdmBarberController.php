@@ -8,6 +8,7 @@ use App\Barber;
 use App\Headquarter;
 use App\TypeUser;
 use App\User;
+use DB;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,11 +24,22 @@ class BarAdmBarberController extends Controller
         $type_user_id = 3;
         $user = \Auth::User();
         $barbershop = $user->barbershop_id;
-        //$barbers = User::where('type_user_id', $type_user_id)->where('headquarter_id.barbershop_id', $barbershop)->orderBy('id')->paginate(10);
-        $barbers = User::where('type_user_id', $type_user_id)
-            ->join('headquarters', 'barbershops.id', '=', 'users.barbershop.id')
-//            ->where('users.headquarter_id', '=', 'headquarters.id')
+        /**
+        $headquarters = Headquarter::where('barbershop_id', $barbershop)->orderBy('id')->paginate(10);
+        foreach($headquarters as $headquarter)
+        {
+            $barber = User::where('type_user_id', $type_user_id)->where('headquarter_id', $headquarter->id)->get();
+            $barbers[$cont] = $barber;
+            $cont++;
+        }
+         */
+        $barbers = DB::table('users')
+            ->join('headquarters', 'users.headquarter_id', '=', 'headquarters.id')
+            ->select('headquarters.businessName' ,'users.*')
+            ->where('headquarters.barbershop_id', $barbershop)
             ->get();
+            //dd($barbers);
+        //$barbers = User::where('type_user_id', $type_user_id)->where('headquarter_id.barbershop_id', $barbershop)->orderBy('id')->paginate(10);
         return view('vistasAdminBarberia.barbers.index', compact('barbers'));
     }
 
@@ -79,7 +91,9 @@ class BarAdmBarberController extends Controller
      */
     public function edit(User $barberAdmin)
     {
-        $headquarters = Headquarter::all()->pluck('businessName', 'id');
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $headquarters = Headquarter::all()->where('barbershop_id', $barbershop_id)->pluck('businessName', 'id');
         return view('vistasAdminBarberia.barbers.edit', compact('barberAdmin','headquarters'));
     }
 
@@ -90,11 +104,11 @@ class BarAdmBarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $barber)
+    public function update(Request $request, User $barberAdmin)
     {
         $input = $request->all();
   
-        $barber->fill($input)->save();
+        $barberAdmin->fill($input)->save();
   
         Session::flash('estado', 'el barbero fue actualizado correctamente!');
         return redirect('/barberAdmins');
@@ -106,9 +120,9 @@ class BarAdmBarberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $barber)
+    public function destroy(User $barberAdmin)
     {
-        $barber->delete();
+        $barberAdmin->delete();
 
         Session::flash('estado', 'el barbero se ha eliminado correctamente');
 

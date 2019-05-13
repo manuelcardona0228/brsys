@@ -34,4 +34,14 @@ class Barbershop extends Model
     {
         return $this->hasMany('App\Headquarter');
     }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
 }

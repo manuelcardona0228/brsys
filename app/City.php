@@ -29,12 +29,12 @@ class City extends Model
 
     public function headquarters()
     {
-        return $this->hasOne('App\Headquarter');
+        return $this->hasMany('App\Headquarter');
     }
 
     public function barbershops()
     {
-        return $this->hasOne('App\Barbershop');
+        return $this->hasMany('App\Barbershop');
     }
 
     public static function cities($id)

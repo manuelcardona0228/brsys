@@ -16,7 +16,10 @@ class BarAdmServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::orderBy('id')->paginate(10);
+        $type_user_id = 3;
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $services = Service::where('barbershop_id', $barbershop_id)->orderBy('id')->paginate(10);
         return view('vistasAdminBarberia.services.index', compact('services'));
     }
 
@@ -27,7 +30,9 @@ class BarAdmServiceController extends Controller
      */
     public function create()
     {
-        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $barbershop = Barbershop::where('id', $barbershop_id)->pluck('businessName', 'id');
         return view('vistasAdminBarberia.services.create', compact('barbershop'));
     }
 
@@ -68,7 +73,9 @@ class BarAdmServiceController extends Controller
      */
     public function edit(Service $serviceAdmin)
     {
-        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $barbershop = Barbershop::where('id', $barbershop_id)->pluck('businessName', 'id');
         return view('vistasAdminBarberia.services.edit', compact('serviceAdmin', 'barbershop'));
     }
 
@@ -79,11 +86,11 @@ class BarAdmServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Service $serviceAdmin)
     {
         $input = $request->all();
   
-        $service->fill($input)->save();
+        $serviceAdmin->fill($input)->save();
   
         Session::flash('estado', 'el servicio fue actualizado correctamente!');
 
@@ -96,9 +103,9 @@ class BarAdmServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Service $serviceAdmin)
     {
-        $service->delete();
+        $serviceAdmin->delete();
 
         Session::flash('estado', 'El servicio se ha eliminado con exito');
 

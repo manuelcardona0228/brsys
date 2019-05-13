@@ -37,6 +37,11 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label('phone', 'Telefono', ['class' => 'control-label']) !!}
+                        {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::label('email', 'E-mail', ['class' => 'control-label']) !!}
                         {!! Form::text('email', null, ['class' => 'form-control']) !!}
                     </div>
@@ -53,12 +58,7 @@
 
                     <div class="form-group">
                         {!! Form::label('city_id', 'Ciudad', ['class' => 'control-label']) !!}
-                        {!! Form::select('city_id', $city, $city,['class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('barbershopAdministrator_id', 'Administrador', ['class' => 'control-label']) !!}
-                        {!! Form::select('barbershopAdministrator_id', $admin, $admin,['class' => 'form-control']) !!}
+                        {!! Form::select('city_id', ['placeholder' => 'Seleccione'], null, ['id' => 'city_id' ,'class' => 'form-control']) !!}
                     </div>
 
                    {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}

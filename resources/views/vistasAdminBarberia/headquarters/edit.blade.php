@@ -59,7 +59,7 @@
 
                     <div class="form-group">
                         {!! Form::label('city_id', 'Ciudad', ['class' => 'control-label']) !!}
-                        {!! Form::select('city_id', $city, $city,['class' => 'form-control']) !!}
+                        {!! Form::select('city_id', ['placeholder' => 'Seleccione'], null, ['id' => 'city_id' ,'class' => 'form-control']) !!}
                     </div>
 
 		            {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}

@@ -19,4 +19,15 @@ class Department extends Model
     {
         return $this->hasOne('App\User');
     }
+
+    public function barbershop()
+    {
+        return $this->hasOne('App\Barbershop');
+    }
+
+    public function headquarters()
+    {
+        return $this->hasMany('App\Headquarter');
+    }
+
 }

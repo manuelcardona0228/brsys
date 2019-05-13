@@ -16,9 +16,14 @@ class Headquarter extends Model
         return $this->belongsTo('App\Barbershop');
     }
 
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
+
     public function city()
     {
-        return $this->hasOne('App\Profile');
+        return $this->belongsTo('App\City');
     }
 
     public function barbers()

@@ -41,7 +41,7 @@
               </tr>
               <tr>
                 <td>Sede</td>
-                <td>{{ $barberAdmin->headquarter_id}}</td>
+                <td>{{ $barberAdmin->headquarter->businessName}}</td>
               </tr>
               <tr>
                 <td>Cargo</td>

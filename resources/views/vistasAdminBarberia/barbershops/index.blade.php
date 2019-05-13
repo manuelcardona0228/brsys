@@ -4,8 +4,6 @@
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
     <h1 class="lines-effect">Lista de barberias</h1>
     <hr>
-    <a href="{!! url('barbershopAdmins/create') !!}" class="btn btn-success btn-block">Crear Barberia</a></p>
-    <hr>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -14,7 +12,7 @@
                 <th scope="col">Razón Social</th>
                 <th scope="col">Departamento</th>
                 <th scope="col">Ciudad</th>
-                <th scope="col">Administrador</th>
+                <th scope="col">Dirección</th>
                 <th scope="col">Fecha Actualizacion</th>
                 <th scope="col">Ver</th>
                 <th scope="col">Editar</th>
@@ -27,9 +25,9 @@
                 <th scope="row">{{ $barbershop->id }}</th>
                 <td>{{ $barbershop->nit }}</td>
                 <td>{{ $barbershop->businessName }}</td>
-                <td>{{ $barbershop->department_id }}</td>
-                <td>{{ $barbershop->city_id }}</td>
-                <td>{{ $barbershop->barbershop_administrator_id }}</td>
+                <td>{{ $barbershop->department->name }}</td>
+                <td>{{ $barbershop->city->name }}</td>
+                <td>{{ $barbershop->address }}</td>
                 <td>{{ $barbershop->updated_at }}</td>
                 <td><a href="{{ route('barbershopAdmins.show', $barbershop->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('barbershopAdmins.edit', $barbershop->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>

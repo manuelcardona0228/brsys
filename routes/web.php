@@ -44,6 +44,7 @@ Route::group(['middleware' => 'barbershopAdmin'], function(){
     Route::resource('headquarterAdmins', 'BarAdmHeadquarterController');
     Route::resource('serviceAdmins', 'BarAdmServiceController');
     Route::resource('customerAdmins', 'BarAdmCustomerController');
+    Route::get('/city/{id}', 'CustomerController@getCities');
 });
 
 Route::group(['middleware' => 'barber'], function(){

@@ -102,7 +102,6 @@
                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
                 <div class="card-body">
                     <ul class="botones">
-                        <a href="{{ route('barbershopAdmins.create') }}"><li>Agregar Barberia</li></a>
                         <a href="{{ route('barbershopAdmins.index') }}"><li>Ver Barberias</li></a>
                     </ul>
                 </div>
@@ -179,6 +178,10 @@
             </div>
         </div>
                 @yield('content')
+
+                {!! Html::script('js/jquery-2.1.0.min.js') !!}
+                {!! Html::script('js/prueba.js') !!}
+
             </div>
         </div>
         </div>

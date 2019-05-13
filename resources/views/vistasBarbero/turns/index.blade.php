@@ -4,7 +4,7 @@
     <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
     <h1 class="lines-effect">Lista de turnos</h1>
     <hr>
-    <a href="{!! url('turns/create') !!}" class="btn btn-success btn-block">Crear Turno</a></p>
+    <a href="{!! url('turnBarbers/create') !!}" class="btn btn-success btn-block">Crear Turno</a></p>
     <hr>
         <table class="table">
             <thead class="thead-dark">

@@ -15,7 +15,6 @@
                 <th scope="col">Calificación</th>
                 <th scope="col">Telefono</th>
                 <th scope="col">Email</th>
-                <th scope="col">Sede</th>
                 <th scope="col">Fecha Actualizacion</th>
                 <th scope="col">Ver</th>
                 <th scope="col">Editar</th>
@@ -30,7 +29,6 @@
                 <td>{{ $barber->qualification }}</td>
                 <td>{{ $barber->phone }}</td>
                 <td>{{ $barber->email }}</td>
-                <td>{{ $barber->headquarter_id }}</td>
                 <td><a href="{{ route('barberAdmins.show', $barber->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('barberAdmins.edit', $barber->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>
                 <td>{!! Form::open([

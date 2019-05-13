@@ -5,7 +5,7 @@
         <h1 class="lines-effect">Lista de servicios</h1>
         <hr>
         <p class="lead"> 
-        <a href="{!! url('services/create') !!}" class="btn btn-success btn-block">Crear Servicio</a></p>
+        <a href="{!! url('serviceAdmins/create') !!}" class="btn btn-success btn-block">Crear Servicio</a></p>
         <hr>
         <table class="table">
             <thead class="thead-dark">
@@ -28,7 +28,7 @@
                 <td>{{ $service->description }}</td>
                 <td>{{ $service->name }}</td>
                 <td>{{ $service->value }}</td>
-                <td>{{ $service->barbershop_id }}</td>
+                <td>{{ $service->barbershop->businessName }}</td>
                 <td>{{ $service->updated_at }}</td>
                 <td><a href="{{ route('serviceAdmins.show', $service->id) }}" class="btn btn-outline-primary btn-sm">Ver</a></td>
                 <td><a href="{{ route('serviceAdmins.edit', $service->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>

@@ -34,9 +34,9 @@ class BarAdmBarbershopController extends Controller
     public function create()
     {
         $department = Department::all()->pluck('name', 'id');
-        $city = City::all()->pluck('name', 'id');
+        //$city = City::all()->pluck('name', 'id');
         $admin = User::all()->pluck('name', 'id');
-        return view('vistasAdminBarberia.barbershops.create', compact('department', 'city', 'admin'));
+        return view('vistasAdminBarberia.barbershops.create', compact('department', 'admin'));
     }
 
     /**
@@ -84,9 +84,11 @@ class BarAdmBarbershopController extends Controller
     public function edit(Barbershop $barbershopAdmin)
     {
         $department = Department::all()->pluck('name', 'id');
-        $city = City::all()->pluck('name', 'id');
-        $admin = User::all()->pluck('name', 'id');
-        return view('vistasAdminBarberia.barbershops.edit', compact('barbershopAdmin', 'department', 'city', 'admin'));
+        //$user = \Auth::User();
+        //$barbershop_id = $user->barbershop_id;
+        //$city = City::all()->pluck('name', 'id');
+        //$admin = User::where('barbershop_id', $barbershop_id)->pluck('name', 'id');
+        return view('vistasAdminBarberia.barbershops.edit', compact('barbershopAdmin', 'department'));
     }
 
     /**
@@ -96,10 +98,10 @@ class BarAdmBarbershopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barbershop $barbershop)
+    public function update(Request $request, Barbershop $barbershopAdmin)
     {
         $input = $request->all();
-        $barbershop->fill($input)->save();
+        $barbershopAdmin->fill($input)->save();
         Session::flash('estado','La barberia se ha editado correctamente');
         return redirect('/barbershopAdmins');
     }
@@ -110,9 +112,9 @@ class BarAdmBarbershopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barbershop $barbershop)
+    public function destroy(Barbershop $barbershopAdmin)
     {
-        $barbershop->delete();
+        $barbershopAdmin->delete();
         Session::flash('estado','La barberia se ha eliminado correctamente');
         return redirect('/barbershopAdmins');
     }

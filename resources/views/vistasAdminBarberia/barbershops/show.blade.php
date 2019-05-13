@@ -26,13 +26,10 @@
                   <td>{{ $barbershopAdmin->website }}</td>
                 </tr>
                 <td>Departamento</td>
-                  <td>{{ $barbershopAdmin->department_id }}</td>
+                  <td>{{ $barbershopAdmin->department->name }}</td>
                 </tr>
                 <td>City</td>
-                  <td>{{ $barbershopAdmin->city_id }}</td>
-                </tr>
-                <td>Administrador</td>
-                  <td>{{ $barbershopAdmin->barbershop_administrator_id }}</td>
+                  <td>{{ $barbershopAdmin->city->name }}</td>
                 </tr>
                 <tr>
                   <td>Creado en</td>

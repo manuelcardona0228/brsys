@@ -18,7 +18,10 @@ class BarAdmHeadquarterController extends Controller
      */
     public function index()
     {
-        $headquarters = Headquarter::orderBy('id')->paginate(10);
+        $type_user_id = 3;
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $headquarters = Headquarter::where('barbershop_id', $barbershop_id)->orderBy('id')->paginate(10);
         return view('vistasAdminBarberia.headquarters.index', compact('headquarters'));
     }
 
@@ -29,10 +32,21 @@ class BarAdmHeadquarterController extends Controller
      */
     public function create()
     {
-        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $barbershop = Barbershop::where('id', $barbershop_id)->pluck('businessName', 'id');
         $department = Department::all()->pluck('name', 'id');
-        $city = City::all()->pluck('name', 'id');
-        return view('vistasAdminBarberia.headquarters.create', compact('barbershop', 'department', 'city'));
+        //$city = City::all()->pluck('name', 'id');
+        return view('vistasAdminBarberia.headquarters.create', compact('barbershop', 'department'));
+    }
+
+    public function getCities(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $cities = City::cities($id);
+            return response()->json($cities);
+        }
     }
 
     /**
@@ -45,7 +59,7 @@ class BarAdmHeadquarterController extends Controller
     {
         $input = $request->all();
 
-        $headquarter = new Image();
+        $headquarter = new Headquarter();
         $barbershop = $request->input('barbershop_id');
         $department = $request->input('department_id');
         $city = $request->input('city_id');
@@ -79,10 +93,12 @@ class BarAdmHeadquarterController extends Controller
      */
     public function edit(Headquarter $headquarterAdmin)
     {
-        $barbershop = Barbershop::all()->pluck('businessName', 'id');
+        $user = \Auth::User();
+        $barbershop_id = $user->barbershop_id;
+        $barbershop = Barbershop::where('id', $barbershop_id)->pluck('businessName', 'id');
         $department = Department::all()->pluck('name', 'id');
-        $city = City::all()->pluck('name', 'id');
-        return view('vistasAdminBarberia.headquarters.edit', compact('headquarterAdmin', 'barbershop', 'department', 'city'));
+        //$city = City::all()->pluck('name', 'id');
+        return view('vistasAdminBarberia.headquarters.edit', compact('headquarterAdmin', 'barbershop', 'department'));
     }
 
     /**
@@ -92,10 +108,10 @@ class BarAdmHeadquarterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Headquarter $headquarter)
+    public function update(Request $request, Headquarter $headquarterAdmin)
     {
         $input = $request->all();
-        $headquarter->fill($input)->save();
+        $headquarterAdmin->fill($input)->save();
         Session::flash('estado', 'La sede fue actualizada correctamente');
         return redirect('/headquarterAdmins');
     }
@@ -106,9 +122,9 @@ class BarAdmHeadquarterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Headquarter $headquarter)
+    public function destroy(Headquarter $headquarterAdmin)
     {
-        $headquarter->delete();
+        $headquarterAdmin->delete();
         Session::flash('estado', 'La sede fue borrada correctamente');
         redirec('/headquarterAdmins');
     }

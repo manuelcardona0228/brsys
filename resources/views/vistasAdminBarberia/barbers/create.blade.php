@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                     {!! Form::label('email', 'E-mail', ['class' => 'control-label']) !!}
-                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">

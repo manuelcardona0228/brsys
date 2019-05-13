@@ -46,17 +46,17 @@
 
                     <div class="form-group">
                         {!! Form::label('barbershop_id', 'Barberia', ['class' => 'control-label']) !!}
-                        {!! Form::text('barbershop_id', null, ['class' => 'form-control']) !!}
+                        {!! Form::select('barbershop_id', $barbershop, null, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('department_id', 'Departamento', ['class' => 'control-label']) !!}
-                        {!! Form::text('department_id', null, ['class' => 'form-control']) !!}
+                        {!! Form::select('department_id',  $department, null,['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('city_id', 'Ciudad', ['class' => 'control-label']) !!}
-                        {!! Form::text('city_id', null, ['class' => 'form-control']) !!}
+                        {!! Form::select('city_id', ['placeholder' => 'Seleccione'], null, ['id' => 'city_id' ,'class' => 'form-control']) !!}
                     </div>
 
 		        {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
