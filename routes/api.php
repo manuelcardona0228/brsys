@@ -24,3 +24,4 @@ Route::apiResource('headquarters', 'Api\HeadquarterController');
 Route::apiResource('profiles', 'Api\ProfileController');
 Route::apiResource('services', 'Api\ServiceController');
 Route::apiResource('turns', 'Api\TurnController');
+Route::apiResource('login', 'Api\LoginController');
