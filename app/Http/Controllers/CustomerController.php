@@ -8,6 +8,7 @@ use App\Customer;
 use App\User;
 use App\TypeUser;
 use App\Department;
+use App\Headquarter;
 use App\City;
 use Session;
 
@@ -45,6 +46,15 @@ class CustomerController extends Controller
         {
             $cities = City::cities($id);
             return response()->json($cities);
+        }
+    }
+
+    public function getHeadquarters(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $headquarters = Headquarter::headquarters($id);
+            return response()->json($headquarters);
         }
     }
 

@@ -134,6 +134,12 @@
                 @endif
             </div>
                 @yield('content')
+
+                
+                {!! Html::script('js/barbershop.js') !!}
+                {!! Html::script('js/barber.js') !!}
+                {!! Html::script('js/service.js') !!}
+
             </div>
         </div>
         </div>

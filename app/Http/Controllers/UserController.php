@@ -8,6 +8,7 @@ use App\Headquarter;
 use App\User;
 use App\Service;
 use App\Turn;
+use App\Barber;
 use Session;
 
 class UserController extends Controller
@@ -29,14 +30,50 @@ class UserController extends Controller
      */
     public function create()
     {
-        $type_user_id = 3;
+        $type_user_id = 4;
         $barbershops = Barbershop::all()->pluck('businessName', 'id');
-        $headquarters = Headquarter::all()->pluck('businessName', 'id');
+        //$headquarters = Headquarter::all()->pluck('businessName', 'id');
         $barbers = User::where('type_user_id', $type_user_id)->pluck('name', 'id');
         $services = Service::all()->pluck('name', 'id');
         $user = \Auth::user();
         $users = User::where('id', $user->id)->pluck('name', 'id');
-        return view('vistasCliente.pedirTurno', compact('barbershops', 'headquarters', 'barbers', 'services', 'users'));
+        return view('vistasCliente.pedirTurno', compact('barbershops', 'barbers', 'services', 'users'));
+    }
+
+    public function getCities(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $cities = City::cities($id);
+            return response()->json($cities);
+        }
+    }
+
+    public function getHeadquarters(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $headquarters = Headquarter::headquarters($id);
+            return response()->json($headquarters);
+        }
+    }
+
+    public function getBarbers(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $barbers = Barber::barbers($id);
+            return response()->json($barbers);
+        }
+    }
+
+    public function getServices(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $services = Service::services($id);
+            return response()->json($services);
+        }
     }
 
     /**

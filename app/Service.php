@@ -19,4 +19,9 @@ class Service extends Model
     {
         return $this->hasOne('App\Turno');
     }
+
+    public static function services($id)
+    {
+        return Service::where('barbershop_id', $id)->get();
+    }
 }

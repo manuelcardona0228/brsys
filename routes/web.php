@@ -45,6 +45,7 @@ Route::group(['middleware' => 'barbershopAdmin'], function(){
     Route::resource('serviceAdmins', 'BarAdmServiceController');
     Route::resource('customerAdmins', 'BarAdmCustomerController');
     Route::get('/city/{id}', 'CustomerController@getCities');
+    Route::get('/headquarter/{id}', 'UserController@getHeadquarters');
 });
 
 Route::group(['middleware' => 'barber'], function(){
@@ -66,6 +67,9 @@ Route::group(['middleware' => 'customer'], function(){
     Route::get('/perfilBarbero', 'UserController@verPerfil');
     Route::get('/buscarServicios', 'UserController@buscarServicios');
     Route::get('/verServicios', 'UserController@verServicios');
+    Route::get('/headquarter/{id}', 'UserController@getHeadquarters');
+    Route::get('/barber/{id}', 'UserController@getBarbers');
+    Route::get('/service/{id}', 'UserController@getServices');
 });
 
 

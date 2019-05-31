@@ -8,24 +8,24 @@
             <div class="card-body">
                 <h5 class="card-title">Pedir Turno</h5>
                 {!! Form::open(['route' => 'users.store']) !!}
-                    <div class="form-group">
-                        {!! Form::label('barbershop_id', 'Seleccione Barberia', ['class' => 'control-label']) !!}
-                        {!! Form::select('barbershop_id', $barbershops, $barbershops,['class' => 'form-control']) !!}
-                    </div>
-
                 <div class="form-group">
-                    <label for="sede">Seleccione Sede</label>
-                    <input type="select" placeholder="Seleccion Sede..." class="form-control" name="sede">
+                    {!! Form::label('barbershop_id', 'Seleccione Barberia', ['class' => 'control-label']) !!}
+                    {!! Form::select('barbershop_id', $barbershops, $barbershops,['class' => 'form-control', 'placeholder' => 'Seleccione']) !!}
                 </div>
 
                 <div class="form-group">
-                    <label for="barbero">Seleccione Barbero</label>
-                    <input type="select" placeholder="Seleccione Barbero..." class="form-control" name="barbero">
+                    {!! Form::label('headquarter_id', 'Seleccione Sede', ['class' => 'control-label']) !!}
+                    {!! Form::select('headquarter_id', ['placeholder' => 'Seleccione'], null, ['id' => 'headquarter_id' ,'class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    <label for="service">Seleccione Servicio</label>
-                    <input type="select" placeholder="Seleccione Servicio..." class="form-control" name="service">
+                    {!! Form::label('barber_id', 'Seleccione Barbero', ['class' => 'control-label']) !!}
+                    {!! Form::select('barber_id', ['placeholder' => 'Seleccione'], null, ['id' => 'barber_id' ,'class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('service_id', 'Seleccione Servicio', ['class' => 'control-label']) !!}
+                    {!! Form::select('service_id', ['placeholder' => 'Seleccione'], null, ['id' => 'service_id' ,'class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
@@ -49,7 +49,12 @@
 
                 <div class="form-group">
                     <label for="service">Seleccione Dia</label>
-                    <input class="calendario" date-date-format="d-m-y" />
+                    <input class="calendario form-control" date-date-format="d-m-y" />
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('day', 'Seleccione Dia', ['class' => 'control-label']) !!}
+                    {!! Form::date('day', null, ['class' => 'calendario form-control', 'date-format' => 'd-m-y']) !!}
                 </div>
 
                 <script>

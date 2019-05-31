@@ -35,4 +35,9 @@ class Headquarter extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public static function headquarters($id)
+    {
+        return Headquarter::where('barbershop_id', $id)->get();
+    }
 }

@@ -24,6 +24,17 @@ class TurnController extends BaseAPIController
          
      }
 
+     public function getTurns(Request $request, $id)
+     {
+        $input = $request->all();
+
+        $turns = Turn::where('barber_id', $id)->get();
+
+         return $this->sendResponse(
+             $turns,
+             'Turns retrieved successfully.');
+     }
+
     public function store(Request $request)
     {
         $input = $request->all();
@@ -36,7 +47,7 @@ class TurnController extends BaseAPIController
         
     } 
 
-    public function show(Turn $user)
+    public function show(Turn $turn)
     {
         return $this->sendResponse(
             $turn,

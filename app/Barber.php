@@ -43,4 +43,9 @@ class Barber extends Model
     {
         return $this->hasMany('App\Turn');
     }
+
+    public static function barbers($id)
+    {
+        return User::where('headquarter_id', $id)->where('type_user_id', 3)->get();
+    }
 }
