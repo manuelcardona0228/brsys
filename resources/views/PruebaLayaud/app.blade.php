@@ -74,22 +74,22 @@
     <div class="row">
         <div class="col-md-2 sidebar">
         <div class="accordion" id="accordionExample">
-        <div class="card" id="card-accordion">
+            <div class="card" id="card-accordion">
                 <div class="card-header" id="headingCero">
-                <h5 class="mb-0">
-                    <button class="btn btn-block accordion-btn" type="button" data-toggle="collapse" data-target="#collapseCero" aria-expanded="true" aria-controls="collapseCero">
-                        <a><i class="fas fa-users"></i> Tipos De Usuarios</a> 
-                    </button>
-                </h5>
+                    <h5 class="mb-0">
+                        <button class="btn btn-block accordion-btn" type="button" data-toggle="collapse" data-target="#collapseCero" aria-expanded="true" aria-controls="collapseCero">
+                            <a><i class="fas fa-users"></i> Tipos De Usuarios</a> 
+                        </button>
+                    </h5>
                 </div>
 
                 <div id="collapseCero" class="collapse" aria-labelledby="headingCero" data-parent="#accordionExample">
-                <div class="card-body">
-                    <ul class="botones">
-                        <a href="{{ route('typeUsers.create') }}"><li>Agregar Tipos De Usuarios</li></a>
-                        <a href="{{ route('typeUsers.index') }}"><li>Ver Tipos De Usuarios</li></a>
-                    </ul>
-                </div>
+                    <div class="card-body">
+                        <ul class="botones">
+                            <a href="{{ route('typeUsers.create') }}"><li>Agregar Tipos De Usuarios</li></a>
+                            <a href="{{ route('typeUsers.index') }}"><li>Ver Tipos De Usuarios</li></a>
+                        </ul>
+                    </div>
                 </div>
             </div>
                 <div class="card" id="card-accordion">

@@ -101,7 +101,7 @@
                         <div class="card-body">
                             <ul class="botones">
                                 <a href="/pedirTurno"><li><i class="fas fa-calendar-check"></i> Pedir Turno</li></a>
-                                <a href="#"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
+                                <a href="{{ route('turnCustomers.index') }}"><li><i class="fas fa-calendar"></i> Historial De Turnos</li></a>
                             </ul>
                         </div>
                     </div>
@@ -126,6 +126,21 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-10 offset-md-2 mt-5 main cuerpo-dos">
+                <main class="py-4">
+                    @if(Session::has('estado'))
+                        <article class="alert alert-success">
+                        {{ Session::get('estado') }}
+                        </article>
+                    @else
+                        @if(Session::has('error'))
+                            <article class="alert alert-danger">
+                            {{ Session::get('error') }}
+                            </article>
+                        @endif
+                    @endif
+                </main>
+
             <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -133,6 +148,7 @@
                     </div>
                 @endif
             </div>
+        </div>
                 @yield('content')
 
                 

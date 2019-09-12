@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Profile;
-use App\Barber;
+use App\User;
 use Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -27,7 +28,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $barber = Barber::all()->pluck('name', 'id');
+        $barber = User::where('type_user_id', 3)->pluck('name', 'id');
         return view('profiles.create', compact('barber'));
     }
 
@@ -40,14 +41,21 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
         $profile = new Profile();
+        //$request->file('imageProfile')->store('public');
         $barber = $request->input('barber_id');
         $profile->fill($input);
         $profile->barber_id = $barber;
+        
+        if($request->file('imageProfile'))
+        {
+            $path = Storage::disk('public')->put('image', $request->file('imageProfile'));
+            $profile->fill(['imageProfile' => asset($path)])->save();
+        }
+        
+        //$profile->save();
 
-        $profile->save();
-
+        
         Session::flash('estado','el perfil ha sido añadido con éxito');
         return redirect('/profiles');
     }

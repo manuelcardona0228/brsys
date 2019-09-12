@@ -34,7 +34,10 @@
                             id:"<?php echo $event->id; ?>",
                             title: "<?php echo $event->title; ?>",
                             barber: "<?php echo $event->barber->name; ?>",
+                            service: "<?php echo $event->turn->service->name; ?>",
+                            customer: "<?php echo $event->turn->customer->name; ?>",
                             start: "<?php echo $event->turn->day; ?>",
+                            hour: "<?php echo $event->turn->hour; ?>",
                             turn: "<?php echo $event->turn->id; ?>",
                             color: "<?php echo $event->color; ?>",
                             textColor: "<?php echo $event->textColor; ?>"
@@ -47,15 +50,15 @@
                 eventClick: function(calEvent,jsEvent,view){
                     $('#tituloEvento').html(calEvent.title);
                     //
-                    $('#txtBarber').val(calEvent.barbero);
-                    $('#txtCliente').val(calEvent.cliente);
-                    $('#txtService').val(calEvent.servicio);
+                    $('#txtBarber').val(calEvent.barber);
+                    $('#txtCliente').val(calEvent.customer);
+                    $('#txtService').val(calEvent.service);
                     $('#txtTitulo').val(calEvent.title);
                     $('#txtColor').val(calEvent.color);
 
-                    FechaHora= calEvent.start._i.split(" ");
-                    $('#txtFecha').val(FechaHora[0]);
-                    $('#txtHora').val(FechaHora[1]);
+                    //FechaHora= calEvent.start._i.split(" ");
+                    $('#txtFecha').val(calEvent.start);//val(FechaHora[0]);
+                    $('#txtHora').val(calEvent.hour)//val(FechaHora[1]);
 
 
 

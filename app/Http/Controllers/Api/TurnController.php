@@ -28,7 +28,7 @@ class TurnController extends BaseAPIController
      {
         $input = $request->all();
 
-        $turns = Turn::where('barber_id', $id)->get();
+        $turns = Turn::where('barber_id', $id)->where('state', 1)->get();
 
          return $this->sendResponse(
              $turns,

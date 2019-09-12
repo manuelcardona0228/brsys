@@ -14,7 +14,7 @@
         <div class="card mt-2">
             <div class="card-header text-white bg-dark">{{ __('Especifique la información del cliente a crear.') }}</div>
             <div class="card-body">
-                {!! Form::open(['route' => 'customerAdimins.store']) !!}
+                {!! Form::open(['route' => 'customerAdmins.store']) !!}
 
                 <div class="form-group">
                     {!! Form::label('name', 'Nombres', ['class' => 'control-label']) !!}

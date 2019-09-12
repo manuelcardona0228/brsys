@@ -24,4 +24,12 @@ class HeadquarterController extends BaseAPIController
             $headquarter, 'Headquarter retrieved successfully'
         );
     }
+
+    public function getHeadquarters(Request $request, $id)
+    {
+        $headquarters = Headquarter::where('barbershop_id', $id)->get();
+        return $this->sendResponse(
+            $headquarters, 'Headquarter retrieved successfully'
+        );
+    }
 }

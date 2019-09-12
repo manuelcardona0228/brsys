@@ -35,7 +35,7 @@
                 <td>{{ $turn->service->value }}</td>
                 <td>{{ $turn->barber->name }}</td>
                 <td>{{ $turn->customer->name }}</td>
-                @if($turn->state = 1)
+                @if($turn->state == 1)
                   <td>Pendiente</td>
                 @else
                   <td>Realizado</td>

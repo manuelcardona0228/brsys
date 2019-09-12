@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Profile;
 use App\Barber;
 use App\User;
+use App\Department;
+use App\City;
 use Session;
 
 class BarAdmCustomerController extends Controller

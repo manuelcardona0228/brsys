@@ -7,6 +7,7 @@ use App\Barbershop;
 use App\Headquarter;
 use App\User;
 use App\Service;
+use App\Event;
 use App\Turn;
 use App\Barber;
 use Session;
@@ -37,7 +38,8 @@ class UserController extends Controller
         $services = Service::all()->pluck('name', 'id');
         $user = \Auth::user();
         $users = User::where('id', $user->id)->pluck('name', 'id');
-        return view('vistasCliente.pedirTurno', compact('barbershops', 'barbers', 'services', 'users'));
+        $hours = ['6:30 AM' => '6:30 AM', '7:00 AM' => '7:00 AM'];
+        return view('vistasCliente.pedirTurno', compact('barbershops', 'barbers', 'services', 'users', 'hours'));
     }
 
     public function getCities(Request $request, $id)
@@ -84,22 +86,50 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $user = \Auth::user();
+        $customerName = $user->name;
+        $customer = $user->id;
+
         $input = $request->all();
-
-        $turn = new Turn();
         $barber = $request->input('barber_id');
-        $service = $request->input('service_id');
-        $customer = $request->input('customer_id');
-        $turn->fill($input);
-        $turn->barber_id = $barber;
-        $turn->service_id = $service;
-        $turn->customer_id = $customer;
-        $turn->state = true;
+        $day = $request->input('day');
+        $hour = $request->input('hour');
+        $turns = Turn::where('day', $day)->where('hour', $hour)->where('barber_id', $barber)->first();
 
-        $turn->save();
+        if($turns != null)
+        {
+            Session::flash('error','el turno no se ha creado, intente con otra hora.');
+            return redirect('/inicioUser');
+        }else{
+            $turn = new Turn();
+            //$barber = $request->input('barber_id');
+            $service = $request->input('service_id');
+            $hour = $request->input('hour');
+            $turn->fill($input);
+            $turn->day = $day;
+            $turn->hour = $hour;
+            $turn->barber_id = $barber;
+            $turn->service_id = $service;
+            $turn->customer_id = $customer;
+            $turn->state = true;
 
-        Session::flash('estado','el turno ha sido añadido con éxito');
-        return redirect('/vistasCliente.home');
+            $turn->save();
+
+            $message = "Turno De".' '.$customerName;
+            $title = $message;
+            $color = '#5180E8';
+            $textColor = '#FFFFFF';
+            $event = new Event();
+            $event->title = $title;
+            $event->barber_id = $barber;
+            $event->turn_id = $turn->id;
+            $event->color = $color;
+            $event->textColor = $textColor;
+
+            $event->save();
+            Session::flash('estado','el turno ha sido añadido con éxito.');
+            return redirect('/inicioUser');
+        }
     }
 
     /**
@@ -154,9 +184,9 @@ class UserController extends Controller
         return view('vistasCliente.home');
     }
 
-    public function pedirTurno()
+    public function historialTurnos()
     {
-
+        
     }
 
     public function buscarBarberos()

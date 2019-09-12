@@ -133,4 +133,20 @@ class BarberController extends Controller
     {
         return view('vistasBarbero.agenda');
     }
+
+    public function editInformacion(User $barber)
+    {
+        $headquarters = Headquarter::all()->pluck('businessName', 'id');
+        return view('vistasBarbero.actualizarInformacion', compact('barber','headquarters'));
+    }
+
+    public function updateInformacion($request, User $barber)
+    {
+        $input = $request->all();
+  
+        $barber->fill($input)->save();
+  
+        Session::flash('estado', 'el barbero fue actualizado correctamente!');
+        return redirect('vistasBarbero.home');
+    }
 }

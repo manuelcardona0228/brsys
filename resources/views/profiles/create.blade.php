@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header text-white bg-dark">{{ __('Especifique la información del perfil a crear.') }}</div>
                 <div class="card-body">
-                {!! Form::open(['route' => 'profiles.store']) !!}
+                {!! Form::open(['route' => 'profiles.store', 'files' => 'true']) !!}
                     <div class="form-group">
                         {!! Form::label('name', 'Nombre', ['class' => 'control-label']) !!}
                         {!! Form::text('name', null, ['class' => 'form-control']) !!}

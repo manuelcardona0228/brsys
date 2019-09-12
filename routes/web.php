@@ -53,6 +53,8 @@ Route::group(['middleware' => 'barber'], function(){
     Route::get('/inicioBarbero', 'BarberController@inicio');
     Route::get('/listaTurnos', 'BarberController@verTurnos');
     Route::get('/historialTurnos', 'BarberController@historialTurnos');
+    Route::get('/editInformacion/{user}', 'BarberController@editInformacion')->name('information');
+    Route::put('/updateInformacion/{user}', 'BarberController@updateInformacion')->name('updateInformation');
     Route::get('/agendaBarbero', 'EventController@index');
     Route::resource('turnBarbers', 'TurnBarController');
     Route::get('/turnosPendientes', 'BarberController@turnosPendientes');
@@ -63,6 +65,7 @@ Route::group(['middleware' => 'customer'], function(){
     Route::get('/inicioUser', 'UserController@inicio');
     Route::get('/pedirTurno', 'UserController@create');
     Route::resource('/users', 'UserController');
+    Route::resource('turnCustomers', 'TurnCustController');
     Route::get('/buscarBarbero', 'UserController@buscarBarberos');
     Route::get('/perfilBarbero', 'UserController@verPerfil');
     Route::get('/buscarServicios', 'UserController@buscarServicios');
@@ -88,6 +91,8 @@ Route::get('/errorCustomer', ['as' => 'vistasCliente.error', function(){
 Route::get('/errorBarber', ['as' => 'vistasBarbero.error', function(){
     return view('vistasBarbero.error');
 }]);
+
+
 
 
 

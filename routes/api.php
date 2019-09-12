@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('barbers', 'Api\BarberController');
 Route::get('/turn/barber/{id}', 'Api\TurnController@getTurns');
+Route::get('/barbershop/headquarter/{id}', 'Api\HeadquarterController@getHeadquarters');
 Route::apiResource('barbershops', 'Api\BarbershopController');
 Route::apiResource('customers', 'Api\CustomerController');
 Route::apiResource('headquarters', 'Api\HeadquarterController');

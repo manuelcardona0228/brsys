@@ -112,7 +112,7 @@
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
                             <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <a><i class="fas fa-address-book"></i></i>Gestionar Perfil</a> 
+                            <a><i class="fas fa-address-book"></i></i>Gestionar Agenda</a> 
                             </button>
                         </h5>
                     </div>
@@ -120,7 +120,25 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                             <ul class="botones">
-                                <a href="/agendaBarbero"><li>Modificar Perfil</li></a>
+                                <a href="/agendaBarbero"><li>Ver Mi Agenda</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="card-accordion">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-block collapsed accordion-btn" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <a><i class="fas fa-chalkboard-teacher"></i>Gestionar Perfil</a> 
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="botones">
+                                <a href="{{ route('information', $user = Auth::user()) }}"><li>Actualizar Informacion</li></a>
+                                <a href="/agendaBarbero"><li>Actualizar Perfil</li></a>
                             </ul>
                         </div>
                     </div>

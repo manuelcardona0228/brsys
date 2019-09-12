@@ -11,7 +11,8 @@
 
                     {!! Form::model($profile, [
                         'method' => 'PUT',
-                        'route' => ['profiles.update', $profile->id]
+                        'route' => ['profiles.update', $profile->id],
+                        'files' => 'true'
                     ]) !!}
 
                     <div class="form-group">

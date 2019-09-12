@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Event;
 use App\Turn;
 
-
-class EventController extends Controller
+class TurnCustController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,11 @@ class EventController extends Controller
      */
     public function index()
     {
-        $type_user_id = 3;
-        $user = \Auth::User();
-        $events = Event::where('barber_id', $user->id)->get();
-        return view('vistasBarbero.agenda', compact('events'));
+        $user = \Auth::user();
+        $customer = $user->id;
+        $state = 0;
+        $turns = Turn::where('customer_id', $customer)->where('state', $state)->get();
+        return view('vistasCliente.turns.index', compact('turns'));
     }
 
     /**
